@@ -1,0 +1,40 @@
+:root{
+    --bgPrimary: #0f172a,
+    --bgSecondary: #e2e8f0,
+    --bg-light: #f8fafc,
+    --text-dark: #111827,
+    --text-light: #f9fafb,
+    --bg-red: #991b1b
+}
+
+
+.app-side-nav {
+  height: 100%;
+  background: #f8fafc;
+  color: #1f2937;
+  border-right: 1px solid #cbd5e1;
+  padding-top: 24px;
+    padding-left: 24px;
+}
+
+.logo{    
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+
+.nav-links a{
+    color: #1f2937;
+    display: block; 
+    margin-bottom: 12px;
+    border-radius: 3px;
+    font-weight:500;
+    padding: 12px 0;
+}
+
+.nav-links a:hover, .active-nav-links{
+    background-color: #e2e8f0;
+    
+    border-right: 3px solid #111827;    
+}
+
+

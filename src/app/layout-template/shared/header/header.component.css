@@ -1,0 +1,19 @@
+.app-header {
+  background-color: #0f172a;
+  color: #f9fafb;
+  border-radius: 5px;
+  padding: 16px 16px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header .main-text {
+  font-size: x-large;
+}
+
+.app-header p {
+  text-align: right;
+  margin-bottom: 8px;
+}

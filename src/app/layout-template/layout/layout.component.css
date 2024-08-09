@@ -1,0 +1,21 @@
+.app-layout {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 17% 83%;
+  box-sizing: border-box;
+}
+
+.app-layout-right-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.app-layout-main-content {
+  flex-grow: 1;
+  /* background-color: #f8fafc; */
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border: none; */
+  border-radius: 8px;
+}

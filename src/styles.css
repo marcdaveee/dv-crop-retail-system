@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root{
+      --bg-primary: #0f172a,
+      --bg-secondary: #e2e8f0,
+      --bg-light: #f8fafc,
+      --text-dark: #1f2937,
+      --text-light: #f9fafb,
+      --bg-red: #991b1b
+  }
+
+  body{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: #1f2937;
+    background: #f3f4f6;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #1f2937
+  }
+  
