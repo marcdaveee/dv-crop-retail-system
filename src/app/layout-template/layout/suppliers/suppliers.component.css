@@ -1,0 +1,74 @@
+.content .content-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.content-top-left {
+  display: flex;
+  align-items: center;
+}
+
+.content-top-right {
+  display: flex;
+  align-items: center;
+}
+
+.back-btn {
+  display: block;
+  margin-right: 18px;
+  border: none;
+  border-radius: 50%;
+}
+
+.back-btn .custom-icon-size {
+  font-size: 48px;
+  width: 40px;
+  height: auto;
+}
+
+.search-text-input {
+  padding: 10px 8px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  width: 280px;
+}
+
+.search-btn {
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  margin-right: 12px;
+
+  color: #0f172a;
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+
+.search-btn:hover {
+  background-color: #0f172a;
+  color: #f9fafb;
+  transition: 0.3s ease-in-out;
+}
+
+/* Supplier List Section */
+
+.list-layout {
+  /* padding: 0 24px; */
+  width: 90%;
+  margin: 0 auto;
+}
+
+.list-layout .list-header {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 24px;
+}
+
+.list-header .actions {
+  text-align: center;
+}

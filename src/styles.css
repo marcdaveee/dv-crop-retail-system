@@ -26,3 +26,15 @@
     color: #1f2937
   }
   
+.btn{
+  cursor: pointer;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 5px;
+  display: inline;
+  letter-spacing: 1.2px;
+  background: #e2e8f0;
+  font-size: 16px;
+  font-weight: 500;
+}
+

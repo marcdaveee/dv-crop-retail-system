@@ -1,1 +1,44 @@
-<p>suppliers works!</p>
+<div class="content">
+  <div class="content-top">
+    <div class="content-top-left">
+      <a routerLink="/" class="back-btn"
+        ><mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="keyboard_backspace"
+          class="custom-icon-size"
+        ></mat-icon
+      ></a>
+
+      <h2>Suppliers</h2>
+    </div>
+
+    <div class="content-top-right">
+      <button class="search-btn">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="search"
+        ></mat-icon>
+      </button>
+      <input type="text" class="search-text-input" />
+    </div>
+  </div>
+
+  <section class="list-layout">
+    <div class="list-header">
+      <h3></h3>
+      <h3>Name</h3>
+      <h3>Address</h3>
+      <h3>Contact No:</h3>
+      <h3 class="actions">Actions</h3>
+    </div>
+
+    <div *ngIf="suppliers.length > 0">
+      <app-supplier-item
+        *ngFor="let supplier of suppliers"
+        [supplier]="supplier"
+      ></app-supplier-item>
+    </div>
+  </section>
+</div>

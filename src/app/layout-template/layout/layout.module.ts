@@ -8,6 +8,8 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { LayoutRoutingModule } from './layout-routing.module';
+import { MatIconModule } from '@angular/material/icon';
+import { SupplierItemComponent } from './suppliers/supplier-item/supplier-item.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,14 @@ import { LayoutRoutingModule } from './layout-routing.module';
     CustomersComponent,
     SuppliersComponent,
     TransactionsComponent,
+    SupplierItemComponent,
   ],
-  imports: [CommonModule, RouterModule, SharedModule, LayoutRoutingModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    SharedModule,
+    LayoutRoutingModule,
+    MatIconModule,
+  ],
 })
 export class LayoutModule {}

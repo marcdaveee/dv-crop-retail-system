@@ -1,0 +1,19 @@
+.supplier-row-item {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  padding: 24px 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  color: #1e293b;
+  margin-bottom: 24px;
+  font-size: larger;
+}
+
+.supplier-row-item .highlighted {
+  font-weight: 600;
+}
+
+.supplier-row-item .actions {
+  text-align: center;
+}
