@@ -31,4 +31,9 @@ export class SupplierService {
     //   )
     // );
   }
+
+  deleteSupplier(supplier: ISupplier): Observable<ISupplier> {
+    const url = `http://localhost:5000/suppliers/${supplier.id}`;
+    return this._http.delete<ISupplier>(url);
+  }
 }

@@ -1,0 +1,18 @@
+.content-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.back-btn {
+  display: block;
+  margin-right: 18px;
+  border: none;
+  border-radius: 50%;
+}
+
+.back-btn .custom-icon-size {
+  font-size: 48px;
+  width: 40px;
+  height: auto;
+}

@@ -11,13 +11,38 @@ import { Observable } from 'rxjs';
 })
 export class SuppliersComponent implements OnInit {
   suppliers: ISupplier[] = [];
+  isContentLoading = true;
+  error = '';
 
   constructor(private _supplierService: SupplierService) {}
 
   ngOnInit() {
-    this._supplierService.getAllSuppliers().subscribe((suppliers) => {
-      this.suppliers = suppliers;
-      console.log(this.suppliers);
+    this.fetchSuppliers();
+  }
+
+  fetchSuppliers() {
+    this._supplierService.getAllSuppliers().subscribe({
+      next: (suppliers) => {
+        this.suppliers = suppliers;
+        this.isContentLoading = false;
+        console.log(this.suppliers);
+      },
+      error: () => {
+        this.error = 'Failed to load data.';
+        this.isContentLoading = false;
+      },
+    });
+  }
+
+  deleteSupplier(supplier: ISupplier) {
+    console.log('Delete this supplier: ', supplier);
+    this._supplierService.deleteSupplier(supplier).subscribe({
+      next: () => {
+        this.fetchSuppliers();
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
 

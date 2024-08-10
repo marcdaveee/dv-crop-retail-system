@@ -1,6 +1,7 @@
 .supplier-row-item {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  align-items: center;
   width: 100%;
   padding: 24px 8px;
   border: 1px solid #ccc;
@@ -15,5 +16,19 @@
 }
 
 .supplier-row-item .actions {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.edit-btn {
+  background-color: #1e293b;
+  padding: 10px 18px;
+  color: #f9fafb;
+}
+
+.delete-btn {
+  background-color: #991b1b;
+  padding: 10px 12px;
+  color: #f9fafb;
 }

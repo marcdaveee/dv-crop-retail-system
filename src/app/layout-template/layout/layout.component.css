@@ -1,21 +1,25 @@
 .app-layout {
-  height: 100vh;
+  height: 100%;
   display: grid;
   grid-template-columns: 17% 83%;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
+  overflow: hidden;
 }
 
 .app-layout-right-panel {
+  /* display: flex;
+  flex-direction: column; */
   display: flex;
   flex-direction: column;
+
   padding: 10px;
+  height: 100%;
 }
 
-.app-layout-main-content {
+.app-main-content {
+  display: block;
   flex-grow: 1;
-  /* background-color: #f8fafc; */
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  border: none; */
-  border-radius: 8px;
+  padding-top: 20px;
+  /* height: 40%; */
+  /* background-color: antiquewhite; */
 }

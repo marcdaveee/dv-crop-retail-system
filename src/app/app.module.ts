@@ -9,6 +9,7 @@ import { SharedModule } from './layout-template/shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { provideHttpClient } from '@angular/common/http';
 import { SupplierService } from './services/supplier.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { SupplierService } from './services/supplier.service';
     AppRoutingModule,
     LayoutModule,
     SharedModule,
+    FontAwesomeModule,
   ],
   providers: [DatePipe, SupplierService, provideHttpClient()],
   bootstrap: [AppComponent],

@@ -1,9 +1,14 @@
 <div class="supplier-row-item">
   <p></p>
-  <p class="highlighted">{{ supplier?.lastName }}, {{ supplier?.firstName }}</p>
-  <p>{{ supplier?.address ? supplier?.address : "-" }}</p>
-  <p>{{ supplier?.contactNo ? supplier?.contactNo : "-" }}</p>
+  <p class="highlighted">{{ supplier.lastName }}, {{ supplier.firstName }}</p>
+  <p>{{ supplier.address ? supplier.address : "-" }}</p>
+  <p>{{ supplier.contactNo ? supplier.contactNo : "-" }}</p>
   <div class="actions">
-    <a href="" class="btn">Edit</a>
+    <a routerLink="/suppliers/edit/{{ supplier.id }}" class="btn edit-btn"
+      >Edit</a
+    >
+    <button (click)="onDelete(supplier)" class="btn delete-btn">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
   </div>
 </div>

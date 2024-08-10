@@ -4,6 +4,10 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  html{
+    height: 100%;
+  }
   
   :root{
       --bg-primary: #0f172a,
@@ -19,6 +23,7 @@
     margin: 0;
     color: #1f2937;
     background: #f3f4f6;
+    height: 100vh;
   }
   
   a {
@@ -32,9 +37,17 @@
   border: none;
   border-radius: 5px;
   display: inline;
-  letter-spacing: 1.2px;
+  letter-spacing: 1.1px;
   background: #e2e8f0;
   font-size: 16px;
   font-weight: 500;
+}
+
+.btn:hover{
+  opacity: 0.9;
+}
+
+.text-center{
+  text-align: center;
 }
 

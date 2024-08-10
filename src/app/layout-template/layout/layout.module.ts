@@ -9,7 +9,11 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { MatIconModule } from '@angular/material/icon';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SupplierItemComponent } from './suppliers/supplier-item/supplier-item.component';
+
+import { EditSupplierComponent } from './suppliers/edit-supplier/edit-supplier.component';
+import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,9 @@ import { SupplierItemComponent } from './suppliers/supplier-item/supplier-item.c
     SuppliersComponent,
     TransactionsComponent,
     SupplierItemComponent,
+
+    EditSupplierComponent,
+    AddSupplierComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +33,7 @@ import { SupplierItemComponent } from './suppliers/supplier-item/supplier-item.c
     SharedModule,
     LayoutRoutingModule,
     MatIconModule,
+    FontAwesomeModule,
   ],
 })
 export class LayoutModule {}

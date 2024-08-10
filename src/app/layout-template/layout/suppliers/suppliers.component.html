@@ -1,4 +1,4 @@
-<div class="content">
+<div>
   <div class="content-top">
     <div class="content-top-left">
       <a routerLink="/" class="back-btn"
@@ -25,20 +25,37 @@
     </div>
   </div>
 
-  <section class="list-layout">
-    <div class="list-header">
-      <h3></h3>
-      <h3>Name</h3>
-      <h3>Address</h3>
-      <h3>Contact No:</h3>
-      <h3 class="actions">Actions</h3>
+  <div>
+    <div class="text-center highlighted" *ngIf="isContentLoading">
+      <h3>Loading...</h3>
+    </div>
+
+    <div class="text-center highlighted" *ngIf="error !== ''">
+      <h1>{{ error }}</h1>
     </div>
 
     <div *ngIf="suppliers.length > 0">
-      <app-supplier-item
-        *ngFor="let supplier of suppliers"
-        [supplier]="supplier"
-      ></app-supplier-item>
+      <div class="flex justify-right mb-4">
+        <a routerLink="/suppliers/add-new" class="btn add-btn">Add New</a>
+      </div>
+
+      <section class="list-layout">
+        <div class="list-header">
+          <h3></h3>
+          <h3>Name</h3>
+          <h3>Address</h3>
+          <h3>Contact No:</h3>
+          <h3 class="actions">Actions</h3>
+        </div>
+
+        <div class="list-content">
+          <app-supplier-item
+            *ngFor="let supplier of suppliers"
+            [supplier]="supplier"
+            (onDeleteSupplier)="deleteSupplier(supplier)"
+          ></app-supplier-item>
+        </div>
+      </section>
     </div>
-  </section>
+  </div>
 </div>
