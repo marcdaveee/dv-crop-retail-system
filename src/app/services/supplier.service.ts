@@ -32,6 +32,21 @@ export class SupplierService {
     // );
   }
 
+  getSupplierById(supplierId: string): Observable<ISupplier> {
+    const url = `http://localhost:5000/suppliers/${supplierId}`;
+    return this._http.get<ISupplier>(url);
+  }
+
+  addNewSupplier(newSupplier: ISupplier): Observable<ISupplier> {
+    const url = `http://localhost:5000/suppliers`;
+    return this._http.post<ISupplier>(url, newSupplier);
+  }
+
+  updateSupplier(updatedSupplier: ISupplier): Observable<ISupplier> {
+    const url = `http://localhost:5000/suppliers/${updatedSupplier.id}`;
+    return this._http.put<ISupplier>(url, updatedSupplier);
+  }
+
   deleteSupplier(supplier: ISupplier): Observable<ISupplier> {
     const url = `http://localhost:5000/suppliers/${supplier.id}`;
     return this._http.delete<ISupplier>(url);

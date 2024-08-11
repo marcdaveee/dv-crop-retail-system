@@ -67,8 +67,13 @@
   height: 100%;
 }
 
-.list-layout .list-header {
+.list-header-wrapper {
+  padding: 0 18px;
+}
+
+.list-header {
   display: grid;
+  padding: 0 8px;
   width: 100%;
   grid-template-columns: repeat(5, 1fr);
   margin-bottom: 24px;

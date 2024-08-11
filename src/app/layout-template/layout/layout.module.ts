@@ -11,9 +11,9 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SupplierItemComponent } from './suppliers/supplier-item/supplier-item.component';
-
 import { EditSupplierComponent } from './suppliers/edit-supplier/edit-supplier.component';
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,6 @@ import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.comp
     SuppliersComponent,
     TransactionsComponent,
     SupplierItemComponent,
-
     EditSupplierComponent,
     AddSupplierComponent,
   ],
@@ -34,6 +33,7 @@ import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.comp
     LayoutRoutingModule,
     MatIconModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
   ],
 })
 export class LayoutModule {}

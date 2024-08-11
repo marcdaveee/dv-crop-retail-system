@@ -1,3 +1,4 @@
+@import '@angular/material/prebuilt-themes/azure-blue.css';
 /* You can add global styles to this file, and also import other style files */
 * {
     margin: 0;
@@ -12,6 +13,7 @@
   :root{
       --bg-primary: #0f172a,
       --bg-secondary: #e2e8f0,
+      --bg-medium-dark: #1e293b,
       --bg-light: #f8fafc,
       --text-dark: #1f2937,
       --text-light: #f9fafb,
@@ -31,6 +33,8 @@
     color: #1f2937
   }
   
+/* Utils */
+
 .btn{
   cursor: pointer;
   padding: 10px 24px;
@@ -43,6 +47,10 @@
   font-weight: 500;
 }
 
+.btn:disabled{
+  cursor:not-allowed;
+}
+
 .btn:hover{
   opacity: 0.9;
 }
@@ -51,3 +59,56 @@
   text-align: center;
 }
 
+/* Grids */
+.grid-col-2{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+}
+
+.gap-2{
+  gap: 20px;
+}
+
+
+/* Forms */
+
+label{
+  margin-bottom: 3px;
+  color: #1f2937;
+}
+
+.text-required{
+  color:red
+}
+
+label, input{
+  display: block;
+}
+
+
+.form-group{  
+  margin-bottom: 38px;
+}
+
+.form-control{
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+.ng-invalid.ng-touched{
+  border-color: #c32323;
+}
+
+.error-block{
+  color: #c32323;
+  font-size: small;
+  margin-top: 5px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

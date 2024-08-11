@@ -1,0 +1,40 @@
+.content-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.back-btn {
+  display: block;
+  margin-right: 18px;
+  border: none;
+  border-radius: 50%;
+}
+
+.back-btn .custom-icon-size {
+  font-size: 48px;
+  width: 40px;
+  height: auto;
+}
+
+.content-body {
+  padding: 0 42px;
+}
+
+.form-wrapper {
+  width: 50%;
+}
+
+.submit-wrapper {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.save-btn {
+  background-color: #1e293b;
+  color: #f9fafb;
+
+  font-size: 16px;
+  font-weight: 500;
+}

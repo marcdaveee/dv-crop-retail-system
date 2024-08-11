@@ -16,3 +16,24 @@
   width: 40px;
   height: auto;
 }
+
+.content-body {
+  padding: 0 42px;
+}
+
+.form-wrapper {
+  width: 50%;
+}
+
+.submit-wrapper {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-btn {
+  background-color: #1e293b;
+  color: #f9fafb;
+  font-size: 16px;
+  font-weight: 500;
+}

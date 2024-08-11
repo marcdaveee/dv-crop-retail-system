@@ -3,6 +3,7 @@ import { SupplierService } from '../../../services/supplier.service';
 import { ISupplier } from '../../../models/ISupplier.interface';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
+import { DialogService } from '../../../services/dialog.service';
 
 @Component({
   selector: 'app-suppliers',
@@ -14,7 +15,10 @@ export class SuppliersComponent implements OnInit {
   isContentLoading = true;
   error = '';
 
-  constructor(private _supplierService: SupplierService) {}
+  constructor(
+    private _supplierService: SupplierService,
+    private _dialogService: DialogService
+  ) {}
 
   ngOnInit() {
     this.fetchSuppliers();
@@ -35,15 +39,16 @@ export class SuppliersComponent implements OnInit {
   }
 
   deleteSupplier(supplier: ISupplier) {
-    console.log('Delete this supplier: ', supplier);
-    this._supplierService.deleteSupplier(supplier).subscribe({
-      next: () => {
-        this.fetchSuppliers();
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    this._dialogService.openConfirmDialog();
+    // console.log('Delete this supplier: ', supplier);
+    // this._supplierService.deleteSupplier(supplier).subscribe({
+    //   next: () => {
+    //     this.fetchSuppliers();
+    //   },
+    //   error: (error) => {
+    //     console.log(error);
+    //   },
+    // });
   }
 
   // getSuppliers() {

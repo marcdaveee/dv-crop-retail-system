@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { provideHttpClient } from '@angular/common/http';
 import { SupplierService } from './services/supplier.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SharedModule,
     FontAwesomeModule,
   ],
-  providers: [DatePipe, SupplierService, provideHttpClient()],
+
+  providers: [
+    DatePipe,
+    SupplierService,
+    provideHttpClient(),
+    provideAnimationsAsync(),
+  ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}
