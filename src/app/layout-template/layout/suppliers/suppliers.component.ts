@@ -39,7 +39,22 @@ export class SuppliersComponent implements OnInit {
   }
 
   deleteSupplier(supplier: ISupplier) {
-    this._dialogService.openConfirmDialog();
+    this._dialogService
+      .openConfirmDialog('Are you sure you want to delete this supplier?')
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this._supplierService.deleteSupplier(supplier).subscribe({
+            next: () => {
+              this.fetchSuppliers();
+            },
+            error: (error) => {
+              console.log(error);
+            },
+          });
+        }
+      });
+
     // console.log('Delete this supplier: ', supplier);
     // this._supplierService.deleteSupplier(supplier).subscribe({
     //   next: () => {

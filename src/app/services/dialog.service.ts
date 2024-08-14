@@ -7,10 +7,12 @@ import { ConfirmDeleteComponent } from '../layout-template/shared/dialogs/confir
 export class DialogService {
   constructor(private dialog: MatDialog) {}
 
-  openConfirmDialog() {
-    this.dialog.open(ConfirmDeleteComponent, {
+  openConfirmDialog(msg: string) {
+    return this.dialog.open(ConfirmDeleteComponent, {
       width: '450px',
-
+      data: {
+        msg: msg,
+      },
       disableClose: true,
     });
   }

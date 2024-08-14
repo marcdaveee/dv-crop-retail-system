@@ -1,41 +1,42 @@
-@import '@angular/material/prebuilt-themes/azure-blue.css';
+@import "@angular/material/prebuilt-themes/azure-blue.css";
 /* You can add global styles to this file, and also import other style files */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  html{
-    height: 100%;
-  }
-  
-  :root{
-      --bg-primary: #0f172a,
-      --bg-secondary: #e2e8f0,
-      --bg-medium-dark: #1e293b,
-      --bg-light: #f8fafc,
-      --text-dark: #1f2937,
-      --text-light: #f9fafb,
-      --bg-red: #991b1b
-  }
+html {
+  height: 100%;
+}
 
-  body{
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    color: #1f2937;
-    background: #f3f4f6;
-    height: 100vh;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #1f2937
-  }
-  
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #e2e8f0;
+  --bg-medium-dark: #1e293b;
+  --bg-light: #f8fafc;
+  --text-dark: #1f2937;
+  --text-light: #f9fafb;
+  --success: #12c99b;
+  --bg-red: #991b1b;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  color: #1f2937;
+  background: #f3f4f6;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: #1f2937;
+}
+
 /* Utils */
 
-.btn{
+.btn {
   cursor: pointer;
   padding: 10px 24px;
   border: none;
@@ -47,51 +48,49 @@
   font-weight: 500;
 }
 
-.btn:disabled{
-  cursor:not-allowed;
+.btn:disabled {
+  cursor: not-allowed;
 }
 
-.btn:hover{
+.btn:hover {
   opacity: 0.9;
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }
 
 /* Grids */
-.grid-col-2{
+.grid-col-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  
 }
 
-.gap-2{
+.gap-2 {
   gap: 20px;
 }
 
-
 /* Forms */
 
-label{
+label {
   margin-bottom: 3px;
   color: #1f2937;
 }
 
-.text-required{
-  color:red
+.text-required {
+  color: red;
 }
 
-label, input{
+label,
+input {
   display: block;
 }
 
-
-.form-group{  
+.form-group {
   margin-bottom: 38px;
 }
 
-.form-control{
+.form-control {
   width: 100%;
   padding: 8px 10px;
   border-radius: 5px;
@@ -100,15 +99,30 @@ label, input{
   outline: none;
 }
 
-.ng-invalid.ng-touched{
+.ng-invalid.ng-touched {
   border-color: #c32323;
 }
 
-.error-block{
+.error-block {
   color: #c32323;
   font-size: small;
   margin-top: 5px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Alerts */
+.success-alert {
+  --mdc-snackbar-container-color: #12c99b !important;
+}
+
+.mat-mdc-snack-bar-action {
+  color: #fff !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

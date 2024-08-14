@@ -1,0 +1,11 @@
+<span class="success-text-color" matSnackBarLabel> {{ data.msg }}! </span>
+<span matSnackBarActions>
+  <button
+    mat-button
+    matSnackBarAction
+    (click)="snackBarRef.dismissWithAction()"
+    class="success-text-color"
+  >
+    Dismiss
+  </button>
+</span>

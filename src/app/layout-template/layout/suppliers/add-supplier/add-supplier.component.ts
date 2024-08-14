@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SupplierService } from '../../../../services/supplier.service';
 import { Router } from '@angular/router';
 import { ISupplier } from '../../../../models/ISupplier.interface';
+import { AlertService } from '../../../../services/alert.service';
 
 @Component({
   selector: 'app-add-supplier',
@@ -16,6 +17,7 @@ export class AddSupplierComponent implements OnInit {
 
   constructor(
     private _supplierService: SupplierService,
+    private _alertService: AlertService,
     private _router: Router
   ) {}
 
@@ -46,6 +48,7 @@ export class AddSupplierComponent implements OnInit {
         next: () => {
           this._router.navigate(['/suppliers']);
           this.isFormSubmitted = false;
+          this._alertService.showAlertSuccess('New Supplier was Added');
         },
         error: (error) => {
           console.log('Error occured.', error.message);

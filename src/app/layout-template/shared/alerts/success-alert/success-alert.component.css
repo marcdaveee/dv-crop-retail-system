@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.success-text-color {
+  color: #fff;
+}
+
+.mat-mdc-snack-bar-action {
+  color: #fff !important;
+}
