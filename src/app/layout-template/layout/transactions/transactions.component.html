@@ -1,1 +1,74 @@
-<p>transactions works!</p>
+<div class="content-top">
+  <div class="content-top-left">
+    <a routerLink="/" class="back-btn"
+      ><mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="keyboard_backspace"
+        class="custom-icon-size"
+      ></mat-icon
+    ></a>
+
+    <h2>Transactions</h2>
+  </div>
+
+  <div class="content-top-right">
+    <button [matMenuTriggerFor]="menu" class="btn btn-primary btn-sm">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="add"
+      ></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <a routerLink="/" mat-menu-item>Incoming Transaction</a>
+      <a routerLink="/" mat-menu-item>Outgoing Transaction</a>
+    </mat-menu>
+  </div>
+</div>
+
+<div class="transaction-wrapper">
+  <div class="transaction-body">
+    <h3 class="mb-1">August</h3>
+
+    <div class="transaction-list">
+      <div class="transaction-card">
+        <h4 class="mb-1">Week 1</h4>
+        <div class="table-head">
+          <p>Customer</p>
+          <p class="text-center">Date</p>
+          <p class="text-center">Net Weight</p>
+          <p class="text-center">Moisture (%)</p>
+          <p class="text-center">Meter Kgs.</p>
+          <p class="text-center">Net Resecada</p>
+          <p class="text-center">Price/kg</p>
+          <p class="text-center">Amount</p>
+          <p class="text-center">No of Sacks</p>
+          <p class="text-center">Type</p>
+        </div>
+
+        <div class="table-row" *ngFor="let transaction of transactionList">
+          <p>{{ transaction.supplier }}</p>
+          <p class="text-center">{{ transaction.date | date }}</p>
+          <p class="text-center">{{ transaction.netWeight }}</p>
+          <p class="text-center">{{ transaction.moisture }}</p>
+          <p class="text-center">{{ transaction.meterKgs }}</p>
+          <p class="text-center">{{ transaction.netResecada }}</p>
+          <p class="text-center">
+            {{ transaction.pricePerKg | currency : "Php " }}
+          </p>
+          <p class="text-center fw-600">
+            {{ transaction.amount | currency : "Php " }}
+          </p>
+          <p class="text-center">{{ transaction.noOfSacks }}</p>
+          <div class="flex">
+            <div
+              class="text-center text-sm p-1"
+              [class]="transaction.type == 'incoming' ? 'incoming' : 'outgoing'"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

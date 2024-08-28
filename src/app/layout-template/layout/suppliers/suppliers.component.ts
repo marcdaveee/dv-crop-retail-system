@@ -4,6 +4,7 @@ import { ISupplier } from '../../../models/ISupplier.interface';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { DialogService } from '../../../services/dialog.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-suppliers',
@@ -17,7 +18,8 @@ export class SuppliersComponent implements OnInit {
 
   constructor(
     private _supplierService: SupplierService,
-    private _dialogService: DialogService
+    private _dialogService: DialogService,
+    private _alertService: AlertService
   ) {}
 
   ngOnInit() {
@@ -47,6 +49,7 @@ export class SuppliersComponent implements OnInit {
           this._supplierService.deleteSupplier(supplier).subscribe({
             next: () => {
               this.fetchSuppliers();
+              this._alertService.showAlertSuccess('Supplier was deleted');
             },
             error: (error) => {
               console.log(error);

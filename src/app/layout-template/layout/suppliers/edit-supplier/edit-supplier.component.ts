@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SupplierService } from '../../../../services/supplier.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ISupplier } from '../../../../models/ISupplier.interface';
+import { AlertService } from '../../../../services/alert.service';
 
 @Component({
   selector: 'app-edit-supplier',
@@ -18,7 +19,8 @@ export class EditSupplierComponent implements OnInit {
   constructor(
     private _supplierService: SupplierService,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -75,7 +77,7 @@ export class EditSupplierComponent implements OnInit {
 
     if (this.editSupplierForm.valid) {
       const updatedSupplier: ISupplier = {
-        id: this.supplierToUpdate?.id,
+        id: this.supplierToUpdate!.id,
         firstName: this.editSupplierForm.value.firstname,
         lastName: this.editSupplierForm.value.lastname,
         address: this.editSupplierForm.value.address,
@@ -87,6 +89,7 @@ export class EditSupplierComponent implements OnInit {
         next: () => {
           this._router.navigate(['/suppliers']);
           this.isFormSubmitted = false;
+          this._alertService.showAlertSuccess('Supplier was updated');
         },
         error: (error) => {
           console.log('Error occured.', error.message);

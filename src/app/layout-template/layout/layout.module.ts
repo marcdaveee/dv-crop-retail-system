@@ -14,6 +14,9 @@ import { SupplierItemComponent } from './suppliers/supplier-item/supplier-item.c
 import { EditSupplierComponent } from './suppliers/edit-supplier/edit-supplier.component';
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomerItemComponent } from './customers/customer-item/customer-item.component';
+import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
+import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SupplierItemComponent,
     EditSupplierComponent,
     AddSupplierComponent,
+    CustomerItemComponent,
+    AddCustomerComponent,
+    EditCustomerComponent,
   ],
   imports: [
     CommonModule,

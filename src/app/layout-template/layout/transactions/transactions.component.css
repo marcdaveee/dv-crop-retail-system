@@ -1,0 +1,97 @@
+.content-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.content-top-left {
+  display: flex;
+  align-items: center;
+}
+
+.content-top-right {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.back-btn {
+  display: block;
+  margin-right: 18px;
+  border: none;
+  border-radius: 50%;
+}
+
+.back-btn .custom-icon-size {
+  font-size: 48px;
+  width: 40px;
+  height: auto;
+}
+
+.search-text-input {
+  padding: 10px 8px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  width: 280px;
+}
+
+.search-btn {
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  margin-right: 12px;
+
+  color: #0f172a;
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+
+.search-btn:hover {
+  background-color: #0f172a;
+  color: #f9fafb;
+  transition: 0.3s ease-in-out;
+}
+
+.transaction-wrapper {
+  width: 80%;
+}
+
+.transaction-body {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 16px;
+}
+
+.transaction-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.table-head {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.table-head,
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  padding: 8px 0;
+}
+
+.text-sm {
+  font-size: 14px;
+}
+
+/* Incoming or Outgoing styles */
+.incoming {
+  background-color: rgb(241, 39, 39);
+}
+
+.outgoing {
+  background-color: rgb(24, 206, 24);
+}

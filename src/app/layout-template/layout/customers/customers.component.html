@@ -1,1 +1,63 @@
-<p>customers works!</p>
+<div>
+  <div class="content-top">
+    <div class="content-top-left">
+      <a routerLink="/" class="back-btn"
+        ><mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="keyboard_backspace"
+          class="custom-icon-size"
+        ></mat-icon
+      ></a>
+
+      <h2>Customers</h2>
+    </div>
+
+    <div class="content-top-right">
+      <button class="search-btn">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="search"
+        ></mat-icon>
+      </button>
+      <input type="text" class="search-text-input" />
+    </div>
+  </div>
+
+  <div>
+    <div class="text-center highlighted" *ngIf="isContentLoading">
+      <h3>Loading...</h3>
+    </div>
+
+    <div class="text-center highlighted" *ngIf="error !== ''">
+      <h1>{{ error }}</h1>
+    </div>
+
+    <div *ngIf="customers.length > 0">
+      <div class="flex justify-right mb-4">
+        <a routerLink="/customers/add-new" class="btn add-btn">Add New</a>
+      </div>
+
+      <section class="list-layout">
+        <div class="list-header-wrapper">
+          <div class="list-header">
+            <h3></h3>
+            <h3>Company Name</h3>
+            <h3>Address</h3>
+            <h3>Contact No:</h3>
+            <h3 class="actions">Actions</h3>
+          </div>
+        </div>
+
+        <div class="list-content">
+          <app-customer-item
+            *ngFor="let customer of customers"
+            [customer]="customer"
+            (onDeleteCustomer)="deleteCustomer(customer)"
+          ></app-customer-item>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

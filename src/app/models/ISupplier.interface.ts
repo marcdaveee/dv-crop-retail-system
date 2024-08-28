@@ -1,5 +1,5 @@
 export interface ISupplier {
-  id?: string;
+  id?: string | number;
   firstName: string;
   lastName: string;
   address?: string;

@@ -60,6 +60,55 @@ a {
   text-align: center;
 }
 
+.btn-primary {
+  background-color: #1e293b;
+
+  color: #fff;
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  border: 1px solid #1e293b;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1e293b;
+  color: #fff;
+}
+
+.btn-outline-delete {
+  background-color: transparent;
+  border: 1px solid #dc2626;
+  color: #dc2626;
+  font-weight: 400;
+}
+
+.btn-outline-delete:hover {
+  background-color: #dc2626;
+  color: #fff;
+}
+
+/* btn sizes */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+/* Font-weight */
+.fw-600 {
+  font-weight: 600;
+}
+.fw-500 {
+  font-weight: 500;
+}
+
+/* Alignment */
+.text-center {
+  text-align: center;
+}
+
 /* Grids */
 .grid-col-2 {
   display: grid;
@@ -70,8 +119,14 @@ a {
   gap: 20px;
 }
 
-/* Forms */
+/* Flex */
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* Forms */
 label {
   margin-bottom: 3px;
   color: #1f2937;
@@ -81,9 +136,11 @@ label {
   color: red;
 }
 
-label,
-input {
+.form-group label,
+.form-group input,
+.form-group select {
   display: block;
+  margin-bottom: 5px;
 }
 
 .form-group {
@@ -109,20 +166,22 @@ input {
   margin-top: 5px;
 }
 
+/* margins */
+.my-1 {
+  margin: 10px 0;
+}
+
+.mb-1 {
+  margin-bottom: 10px;
+}
+
+/* paddings */
+.p-1 {
+  padding: 3px;
+}
+
 /* Alerts */
 .success-alert {
   --mdc-snackbar-container-color: #12c99b !important;
-}
-
-.mat-mdc-snack-bar-action {
-  color: #fff !important;
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  --mdc-text-button-label-text-color: #fff !important;
 }

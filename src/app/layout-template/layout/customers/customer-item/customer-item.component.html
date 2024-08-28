@@ -1,0 +1,14 @@
+<div class="supplier-row-item">
+  <p></p>
+  <p class="highlighted">{{ customer.name }}</p>
+  <p>{{ customer.address ? customer.address : "-" }}</p>
+  <p>{{ customer.contactNo ? customer.contactNo : "-" }}</p>
+  <div class="actions">
+    <a routerLink="/customers/edit/{{ customer.id }}" class="btn edit-btn"
+      >Edit</a
+    >
+    <button (click)="onDelete(customer)" class="btn delete-btn">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+  </div>
+</div>

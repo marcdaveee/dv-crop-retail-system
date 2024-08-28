@@ -15,8 +15,11 @@ interface ServerResponse {
 export class SupplierService {
   constructor(private _http: HttpClient) {}
 
+  apiUrl = 'https://localhost:7257/api/suppliers';
+
   getAllSuppliers(): Observable<ISupplier[]> {
-    return this._http.get<ISupplier[]>('http://localhost:5000/suppliers');
+    // return this._http.get<ISupplier[]>('http://localhost:5000/suppliers');
+    return this._http.get<ISupplier[]>(this.apiUrl);
     // .pipe(
     //   map(
     //     (res) => res.suppliers
@@ -33,22 +36,22 @@ export class SupplierService {
   }
 
   getSupplierById(supplierId: string): Observable<ISupplier> {
-    const url = `http://localhost:5000/suppliers/${supplierId}`;
+    const url = `${this.apiUrl}/${supplierId}`;
     return this._http.get<ISupplier>(url);
   }
 
   addNewSupplier(newSupplier: ISupplier): Observable<ISupplier> {
-    const url = `http://localhost:5000/suppliers`;
+    const url = `${this.apiUrl}`;
     return this._http.post<ISupplier>(url, newSupplier);
   }
 
   updateSupplier(updatedSupplier: ISupplier): Observable<ISupplier> {
-    const url = `http://localhost:5000/suppliers/${updatedSupplier.id}`;
+    const url = `${this.apiUrl}/${updatedSupplier.id}`;
     return this._http.put<ISupplier>(url, updatedSupplier);
   }
 
   deleteSupplier(supplier: ISupplier): Observable<ISupplier> {
-    const url = `http://localhost:5000/suppliers/${supplier.id}`;
+    const url = `${this.apiUrl}/${supplier.id}`;
     return this._http.delete<ISupplier>(url);
   }
 }

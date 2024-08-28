@@ -28,7 +28,7 @@
       "id": "4",
       "firstName": "Richard",
       "lastName": "D.",
-      "address": "",
+      "address": "Rosario",
       "contactNo": "09223252823",
       "email": ""
     },
@@ -36,7 +36,7 @@
       "id": "YpEoP8M",
       "firstName": "Rolly",
       "lastName": "Matanguihan",
-      "address": "",
+      "address": "Niing",
       "contactNo": "",
       "email": ""
     },
@@ -49,12 +49,84 @@
       "id": "-jCZFw0"
     },
     {
-      "id": "LmJnN4O",
-      "firstName": "John",
-      "lastName": "Ass",
-      "address": null,
+      "id": "MCxREng",
+      "firstName": "test",
+      "lastName": "test",
+      "address": "Blessed",
       "contactNo": null,
       "email": null
+    }
+  ],
+  "customers": [
+    {
+      "id": "1",
+      "companyName": "ENTOM",
+      "address": "Tayabas",
+      "contactNo": "09231412823",
+      "email": "entom@gmail.com"
+    },
+    {
+      "id": "2",
+      "companyName": "Global",
+      "address": "Lucena",
+      "contactNo": "09441416123",
+      "email": "Global.ph@gmail.com"
+    }
+  ],
+
+  "transactions": [
+    {
+      "id": 1,
+      "date": "Oct-20-2024",
+      "supplier": "Rommel",
+      "netWeight": 1143,
+      "moisture": 8,
+      "meterKgs": 91,
+      "netResecada": 1058,
+      "pricePerKg": 30,
+      "amount": 31740,
+      "noOfSacks": 27,
+      "type": "incoming"
+    },
+
+    {
+      "id": 2,
+      "date": "Oct-24-2024",
+      "supplier": "Arnel",
+      "netWeight": 1001,
+      "moisture": 7,
+      "meterKgs": 70,
+      "netResecada": 927,
+      "pricePerKg": 30.2,
+      "amount": 27995,
+      "noOfSacks": 24,
+      "type": "incoming"
+    },
+    {
+      "id": 3,
+      "date": "Oct-24-2024",
+      "supplier": "Richard",
+      "netWeight": 900,
+      "moisture": 7.5,
+      "meterKgs": 67,
+      "netResecada": 830,
+      "pricePerKg": 30.2,
+      "amount": 25066,
+      "noOfSacks": 21,
+      "type": "incoming"
+    },
+    {
+      "id": 4,
+      "date": "Oct-25-2024",
+      "supplier": "Edna",
+      "netWeight": 32,
+      "moisture": 6,
+      "meterKgs": 2,
+      "netResecada": 30,
+      "pricePerKg": 30.2,
+      "amount": 906,
+      "noOfSacks": 1,
+      "type": "outgoing"
     }
   ]
 }

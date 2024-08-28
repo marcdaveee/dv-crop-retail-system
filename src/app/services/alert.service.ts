@@ -9,9 +9,7 @@ export class AlertService {
 
   showAlertSuccess(msg: string) {
     return this._snackBar.openFromComponent(SuccessAlertComponent, {
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
-      duration: 3000,
+      duration: 5000,
       panelClass: 'success-alert',
       data: {
         msg: msg,

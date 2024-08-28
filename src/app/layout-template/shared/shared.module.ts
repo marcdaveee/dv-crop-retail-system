@@ -8,9 +8,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SuccessAlertComponent } from './alerts/success-alert/success-alert.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
-  declarations: [SidebarNavComponent, HeaderComponent, ConfirmDeleteComponent, SuccessAlertComponent],
+  declarations: [
+    SidebarNavComponent,
+    HeaderComponent,
+    ConfirmDeleteComponent,
+    SuccessAlertComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -18,6 +24,11 @@ import { SuccessAlertComponent } from './alerts/success-alert/success-alert.comp
     MatButtonModule,
     MatIcon,
   ],
-  exports: [SidebarNavComponent, HeaderComponent],
+  exports: [
+    SidebarNavComponent,
+    HeaderComponent,
+    MatMenuModule,
+    MatButtonModule,
+  ],
 })
 export class SharedModule {}

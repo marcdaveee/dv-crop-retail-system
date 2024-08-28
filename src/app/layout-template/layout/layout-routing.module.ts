@@ -7,6 +7,8 @@ import { CustomersComponent } from './customers/customers.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
 import { EditSupplierComponent } from './suppliers/edit-supplier/edit-supplier.component';
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
+import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
+import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
 
 const routes: Routes = [
   {
@@ -20,8 +22,10 @@ const routes: Routes = [
       },
       { path: 'transactions', component: TransactionsComponent },
       { path: 'customers', component: CustomersComponent },
+      { path: 'customers/add-new', component: AddCustomerComponent },
       { path: 'suppliers', component: SuppliersComponent },
       { path: 'suppliers/add-new', component: AddSupplierComponent },
+      { path: 'customers/edit/:id', component: EditCustomerComponent },
       {
         path: 'suppliers/edit/:id',
         component: EditSupplierComponent,
@@ -30,7 +34,7 @@ const routes: Routes = [
     ],
   },
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
