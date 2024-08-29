@@ -11,3 +11,22 @@ export interface ITransaction {
   noOfSacks: number;
   type: string;
 }
+
+// export interface ITransactionPerMonth {
+//   month: string | null;
+//   transactionPerWeek: ITransaction[][];
+// }
+
+export interface ITransactionPerMonth {
+  month: string | null;
+  transactionPerWeek: ITransactionPerWeek[];
+}
+
+export interface ITransactionPerWeek {
+  week: number;
+  transactions: ITransaction[];
+}
+
+export interface IGroupedTransaction {
+  transactionPerMonth: ITransactionPerMonth[];
+}

@@ -29,43 +29,62 @@
 
 <div class="transaction-wrapper">
   <div class="transaction-body">
-    <h3 class="mb-1">August</h3>
+    <div
+      *ngFor="
+        let monthlyTransaction of groupedTransactions.transactionPerMonth;
+        index as i
+      "
+      class="mb-3"
+    >
+      <h3 class="mb-1">{{ monthlyTransaction.month }}</h3>
 
-    <div class="transaction-list">
-      <div class="transaction-card">
-        <h4 class="mb-1">Week 1</h4>
-        <div class="table-head">
-          <p>Customer</p>
-          <p class="text-center">Date</p>
-          <p class="text-center">Net Weight</p>
-          <p class="text-center">Moisture (%)</p>
-          <p class="text-center">Meter Kgs.</p>
-          <p class="text-center">Net Resecada</p>
-          <p class="text-center">Price/kg</p>
-          <p class="text-center">Amount</p>
-          <p class="text-center">No of Sacks</p>
-          <p class="text-center">Type</p>
-        </div>
+      <div
+        class="transaction-list"
+        *ngFor="let weeklyTransaction of monthlyTransaction.transactionPerWeek"
+      >
+        <div
+          class="transaction-card"
+          *ngIf="weeklyTransaction.transactions.length !== 0"
+        >
+          <h4 class="mb-1">Week {{ weeklyTransaction.week }}</h4>
+          <div class="table-head">
+            <p>Customer</p>
+            <p class="text-center">Date</p>
+            <p class="text-center">Net Weight</p>
+            <p class="text-center">Moisture (%)</p>
+            <p class="text-center">Meter Kgs.</p>
+            <p class="text-center">Net Resecada</p>
+            <p class="text-center">Price/kg</p>
+            <p class="text-center">Amount</p>
+            <p class="text-center">No of Sacks</p>
+            <p class="text-center">Type</p>
+          </div>
 
-        <div class="table-row" *ngFor="let transaction of transactionList">
-          <p>{{ transaction.supplier }}</p>
-          <p class="text-center">{{ transaction.date | date }}</p>
-          <p class="text-center">{{ transaction.netWeight }}</p>
-          <p class="text-center">{{ transaction.moisture }}</p>
-          <p class="text-center">{{ transaction.meterKgs }}</p>
-          <p class="text-center">{{ transaction.netResecada }}</p>
-          <p class="text-center">
-            {{ transaction.pricePerKg | currency : "Php " }}
-          </p>
-          <p class="text-center fw-600">
-            {{ transaction.amount | currency : "Php " }}
-          </p>
-          <p class="text-center">{{ transaction.noOfSacks }}</p>
-          <div class="flex">
-            <div
-              class="text-center text-sm p-1"
-              [class]="transaction.type == 'incoming' ? 'incoming' : 'outgoing'"
-            ></div>
+          <div
+            class="table-row"
+            *ngFor="let transaction of weeklyTransaction.transactions"
+          >
+            <p>{{ transaction.supplier }}</p>
+            <p class="text-center">{{ transaction.date | date }}</p>
+            <p class="text-center">{{ transaction.netWeight }}</p>
+            <p class="text-center">{{ transaction.moisture }}</p>
+            <p class="text-center">{{ transaction.meterKgs }}</p>
+            <p class="text-center">{{ transaction.netResecada }}</p>
+            <p class="text-center">
+              {{ transaction.pricePerKg | currency : "Php " }}
+            </p>
+            <p class="text-center fw-600">
+              {{ transaction.amount | currency : "Php " }}
+            </p>
+            <p class="text-center">{{ transaction.noOfSacks }}</p>
+            <div class="flex">
+              <div
+                class="text-center text-sm p-1"
+                [class]="
+                  transaction.type == 'incoming' ? 'incoming' : 'outgoing'
+                "
+              ></div>
+            </div>
           </div>
         </div>
       </div>

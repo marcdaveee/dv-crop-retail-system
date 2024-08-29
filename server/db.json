@@ -77,7 +77,7 @@
   "transactions": [
     {
       "id": 1,
-      "date": "Oct-20-2024",
+      "date": "Aug-27-2024",
       "supplier": "Rommel",
       "netWeight": 1143,
       "moisture": 8,
@@ -91,7 +91,7 @@
 
     {
       "id": 2,
-      "date": "Oct-24-2024",
+      "date": "Aug-26-2024",
       "supplier": "Arnel",
       "netWeight": 1001,
       "moisture": 7,
@@ -104,7 +104,7 @@
     },
     {
       "id": 3,
-      "date": "Oct-24-2024",
+      "date": "Aug-26-2024",
       "supplier": "Richard",
       "netWeight": 900,
       "moisture": 7.5,
@@ -117,7 +117,7 @@
     },
     {
       "id": 4,
-      "date": "Oct-25-2024",
+      "date": "Aug-25-2024",
       "supplier": "Edna",
       "netWeight": 32,
       "moisture": 6,
@@ -127,6 +127,85 @@
       "amount": 906,
       "noOfSacks": 1,
       "type": "outgoing"
+    },
+    {
+      "id": 5,
+      "date": "Aug-24-2024",
+      "supplier": "Rommel",
+      "netWeight": 1143,
+      "moisture": 8,
+      "meterKgs": 91,
+      "netResecada": 1058,
+      "pricePerKg": 30,
+      "amount": 31740,
+      "noOfSacks": 27,
+      "type": "incoming"
+    },
+    {
+      "id": 6,
+      "date": "Aug-20-2024",
+      "supplier": "Rommel",
+      "netWeight": 1143,
+      "moisture": 8,
+      "meterKgs": 91,
+      "netResecada": 1058,
+      "pricePerKg": 30,
+      "amount": 31740,
+      "noOfSacks": 27,
+      "type": "incoming"
+    },
+    {
+      "id": 7,
+      "date": "Aug-13-2024",
+      "supplier": "Rommel",
+      "netWeight": 1143,
+      "moisture": 8,
+      "meterKgs": 91,
+      "netResecada": 1058,
+      "pricePerKg": 30,
+      "amount": 31740,
+      "noOfSacks": 27,
+      "type": "incoming"
+    },
+    {
+      "id": 8,
+      "date": "Jul-5-2024",
+      "supplier": "Rommel",
+      "netWeight": 1143,
+      "moisture": 8,
+      "meterKgs": 91,
+      "netResecada": 1058,
+      "pricePerKg": 30,
+      "amount": 31740,
+      "noOfSacks": 27,
+      "type": "incoming"
+    },
+
+    {
+      "id": 9,
+      "date": "Jun-20-2024",
+      "supplier": "Rommel",
+      "netWeight": 1143,
+      "moisture": 8,
+      "meterKgs": 91,
+      "netResecada": 1058,
+      "pricePerKg": 30,
+      "amount": 31740,
+      "noOfSacks": 27,
+      "type": "incoming"
+    },
+    {
+      "id": 10,
+      "date": "April-28-2024",
+      "supplier": "Rommel",
+      "netWeight": 1143,
+      "moisture": 8,
+      "meterKgs": 91,
+      "netResecada": 1058,
+      "pricePerKg": 30,
+      "amount": 31740,
+      "noOfSacks": 27,
+      "type": "incoming"
     }
   ]
 }

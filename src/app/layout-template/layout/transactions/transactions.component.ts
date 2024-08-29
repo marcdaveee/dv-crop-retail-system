@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 
-import { ITransaction } from '../../../models/ITransaction.interface';
+import {
+  IGroupedTransaction,
+  ITransaction,
+} from '../../../models/ITransaction.interface';
 import { TransactionService } from '../../../services/transaction.service';
 
 @Component({
@@ -10,11 +13,16 @@ import { TransactionService } from '../../../services/transaction.service';
 })
 export class TransactionsComponent {
   transactionList: ITransaction[] = [];
+  groupedTransactions: IGroupedTransaction = { transactionPerMonth: [] };
 
   constructor(private _transactionService: TransactionService) {
     this._transactionService.getTransactions().subscribe({
       next: (res) => {
         this.transactionList = res;
+        this.groupedTransactions =
+          this._transactionService.groupTransactionByMonth(
+            this.transactionList
+          );
         console.log(res);
       },
       error: (err) => {
