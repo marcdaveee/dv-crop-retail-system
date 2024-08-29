@@ -30,4 +30,33 @@ export class TransactionsComponent {
       },
     });
   }
+
+  getTotalCapital(transactions: ITransaction[]) {
+    let total = 0;
+    transactions.forEach((t) => {
+      if (t.type === 'incoming') {
+        total += t.amount;
+      }
+    });
+    return total;
+  }
+
+  getTotalRevenues(transaction: ITransaction[]) {
+    let total = 0;
+    transaction.forEach((t) => {
+      if (t.type === 'outgoing') {
+        total += t.amount;
+      }
+    });
+    return total;
+  }
+
+  getReturnOfInvestment(transactions: ITransaction[]) {
+    let returnOfInvestment = 0;
+    const revenue = this.getTotalRevenues(transactions);
+    const capital = this.getTotalCapital(transactions);
+
+    returnOfInvestment = revenue - capital;
+    return returnOfInvestment;
+  }
 }

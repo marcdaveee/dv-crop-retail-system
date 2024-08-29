@@ -86,6 +86,38 @@
               ></div>
             </div>
           </div>
+
+          <div class="transaction-summary">
+            <div class="transaction-computation">
+              <div>Total Capital:</div>
+              <div>
+                {{
+                  getTotalCapital(weeklyTransaction.transactions)
+                    | currency : "Php "
+                }}
+              </div>
+            </div>
+            <div class="transaction-computation">
+              <div>Total Revenue:</div>
+
+              <div>
+                {{
+                  getTotalRevenues(weeklyTransaction.transactions)
+                    | currency : "Php "
+                }}
+              </div>
+            </div>
+
+            <div class="transaction-computation">
+              <div>Return of Investment:</div>
+              <div>
+                {{
+                  getReturnOfInvestment(weeklyTransaction.transactions)
+                    | currency : "Php "
+                }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -87,6 +87,19 @@
   padding: 8px 0;
 }
 
+.transaction-summary {
+  margin-top: 12px;
+  border-top: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  justify-content: end;
+}
+
+.transaction-computation {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
 .text-sm {
   font-size: 14px;
 }
