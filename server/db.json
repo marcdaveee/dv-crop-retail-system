@@ -77,16 +77,16 @@
   "transactions": [
     {
       "id": 1,
-      "date": "Aug-27-2024",
-      "supplier": "Rommel",
-      "netWeight": 1143,
-      "moisture": 8,
-      "meterKgs": 91,
-      "netResecada": 1058,
-      "pricePerKg": 30,
-      "amount": 31740,
-      "noOfSacks": 27,
-      "type": "incoming"
+      "date": "Aug-30-2024",
+      "supplier": "Entom",
+      "netWeight": 6150,
+      "moisture": 4,
+      "meterKgs": 246,
+      "netResecada": 5904,
+      "pricePerKg": 33,
+      "amount": 194083,
+      "noOfSacks": 149,
+      "type": "outgoing"
     },
 
     {

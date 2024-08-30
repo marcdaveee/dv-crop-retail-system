@@ -27,7 +27,12 @@
   </div>
 </div>
 
-<div class="transaction-wrapper">
+<div *ngIf="isLoading" class="text-center fw-600"><h3>Loading...</h3></div>
+<div *ngIf="errorMessage !== ''" class="text-center fw-600">
+  <h1>{{ errorMessage }}</h1>
+</div>
+
+<div class="transaction-wrapper" *ngIf="transactionList.length !== 0">
   <div class="transaction-body">
     <div
       *ngFor="
@@ -89,31 +94,31 @@
 
           <div class="transaction-summary">
             <div class="transaction-computation">
-              <div>Total Capital:</div>
-              <div>
+              <div class="fw-600">Total Capital:</div>
+              <div class="text-end">
                 {{
                   getTotalCapital(weeklyTransaction.transactions)
-                    | currency : "Php "
+                    | currency : " Php "
                 }}
               </div>
             </div>
             <div class="transaction-computation">
-              <div>Total Revenue:</div>
+              <div class="fw-600">Total Revenue:</div>
 
-              <div>
+              <div class="text-end">
                 {{
                   getTotalRevenues(weeklyTransaction.transactions)
-                    | currency : "Php "
+                    | currency : " Php "
                 }}
               </div>
             </div>
 
             <div class="transaction-computation">
-              <div>Return of Investment:</div>
-              <div>
+              <div class="fw-600">Return of Investment:</div>
+              <div class="text-end">
                 {{
                   getReturnOfInvestment(weeklyTransaction.transactions)
-                    | currency : "Php "
+                    | currency : " Php "
                 }}
               </div>
             </div>

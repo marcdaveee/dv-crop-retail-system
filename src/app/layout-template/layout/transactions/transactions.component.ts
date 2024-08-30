@@ -13,6 +13,8 @@ import { TransactionService } from '../../../services/transaction.service';
 })
 export class TransactionsComponent {
   transactionList: ITransaction[] = [];
+  isLoading = true;
+  errorMessage = '';
   groupedTransactions: IGroupedTransaction = { transactionPerMonth: [] };
 
   constructor(private _transactionService: TransactionService) {
@@ -24,9 +26,12 @@ export class TransactionsComponent {
             this.transactionList
           );
         console.log(res);
+        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);
+        this.errorMessage = 'Failed to load data.';
+        this.isLoading = false;
       },
     });
   }
