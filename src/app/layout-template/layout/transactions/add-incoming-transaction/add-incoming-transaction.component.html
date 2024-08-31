@@ -1,0 +1,283 @@
+<div>
+  <div class="content-top">
+    <a routerLink="/transactions" class="back-btn"
+      ><mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="keyboard_backspace"
+        class="custom-icon-size"
+      ></mat-icon
+    ></a>
+
+    <h2>New Incoming Copras</h2>
+  </div>
+
+  <div class="content-body">
+    <div class="form-wrapper">
+      <form [formGroup]="addIncomingTransactionForm" (ngSubmit)="onSubmit()">
+        <div class="grid-col-2 gap-2">
+          <div class="form-group">
+            <label for="date">Date:</label>
+            <input
+              type="date"
+              name="date"
+              class="form-control"
+              formControlName="date"
+            />
+            <div
+              *ngIf="
+                !addIncomingTransactionForm.get('date')?.valid &&
+                (addIncomingTransactionForm.get('date')?.touched || isSubmitted)
+              "
+              class="error-block"
+            >
+              Please provide the date of transaction
+            </div>
+          </div>
+
+          <div></div>
+        </div>
+
+        <div class="grid-col-2 gap-2">
+          <div class="form-group">
+            <label for="supplierName"
+              ><span class="text-required">*</span>Supplier</label
+            >
+
+            <select
+              class="form-control"
+              name="supplierName"
+              id="supplierName"
+              formControlName="supplierName"
+            >
+              <option value="">--- Select ---</option>
+              <option *ngFor="let supplier of suppliers" [value]="supplier.id">
+                {{ supplier.firstName }} {{ supplier.lastName }}
+              </option>
+            </select>
+
+            <div
+              *ngIf="
+                !addIncomingTransactionForm.get('supplierName')?.valid &&
+                (addIncomingTransactionForm.get('supplierName')?.touched ||
+                  isSubmitted)
+              "
+              class="error-block"
+            >
+              Please provide the supplier name
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-col-2 gap-2">
+          <div class="form-group">
+            <label for="netWeight">Net Weight:</label>
+            <input
+              type="number"
+              name="netWeight"
+              class="form-control"
+              formControlName="netWeight"
+            />
+            <div
+              *ngIf="
+                !addIncomingTransactionForm.get('netWeight')?.valid &&
+                (addIncomingTransactionForm.get('netWeight')?.touched ||
+                  isSubmitted)
+              "
+              class="error-block"
+            >
+              <div
+                *ngIf="
+                  addIncomingTransactionForm
+                    .get('netWeight')
+                    ?.hasError('pattern')
+                "
+                class="error-block"
+              >
+                Must be a valid Weight
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="moisture">Moisture</label>
+            <input
+              type="number"
+              name="moisture"
+              class="form-control"
+              formControlName="moisture"
+            />
+            <div
+              *ngIf="
+                !addIncomingTransactionForm.get('moisture')?.valid &&
+                (addIncomingTransactionForm.get('moisture')?.touched ||
+                  isSubmitted)
+              "
+              class="error-block"
+            >
+              <div
+                *ngIf="
+                  addIncomingTransactionForm
+                    .get('moisture')
+                    ?.hasError('pattern')
+                "
+                class="error-block"
+              >
+                Moisture must be a number
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-col-2 gap-2">
+          <div class="form-group">
+            <label for="meterKgs">Meter Kg:</label>
+            <input
+              type="number"
+              name="meterKgs"
+              class="form-control"
+              formControlName="meterKgs"
+              readonly
+            />
+            <div
+              *ngIf="
+                !addIncomingTransactionForm.get('meterKgs')?.valid &&
+                (addIncomingTransactionForm.get('meterKgs')?.touched ||
+                  isSubmitted)
+              "
+              class="error-block"
+            >
+              <div
+                *ngIf="
+                  addIncomingTransactionForm
+                    .get('meterKgs')
+                    ?.hasError('pattern')
+                "
+                class="error-block"
+              >
+                Meter kgs. must be a number
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="noOfSacks">No of Sacks</label>
+            <input
+              type="number"
+              name="noOfSacks"
+              class="form-control"
+              formControlName="noOfSacks"
+            />
+            <div
+              *ngIf="
+                !addIncomingTransactionForm.get('noOfSacks')?.valid &&
+                (addIncomingTransactionForm.get('noOfSacks')?.touched ||
+                  isSubmitted)
+              "
+              class="error-block"
+            >
+              <div
+                *ngIf="
+                  addIncomingTransactionForm
+                    .get('noOfSacks')
+                    ?.hasError('pattern')
+                "
+                class="error-block"
+              >
+                No of sacks must be a number
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-col-2 gap-2">
+          <div class="form-group">
+            <label for="netResecada">Net Resecada</label>
+            <input
+              type="number"
+              name="netResecada"
+              class="form-control"
+              formControlName="netResecada"
+              readonly
+            />
+            <div
+              *ngIf="
+                !addIncomingTransactionForm.get('netResecada')?.valid &&
+                (addIncomingTransactionForm.get('netResecada')?.touched ||
+                  isSubmitted)
+              "
+              class="error-block"
+            >
+              <div
+                *ngIf="
+                  addIncomingTransactionForm
+                    .get('netResecada')
+                    ?.hasError('pattern')
+                "
+                class="error-block"
+              >
+                Net Resecada must be a number
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pricePerKg">Price per Kg:</label>
+            <input
+              type="number"
+              name="pricePerKg"
+              class="form-control"
+              formControlName="pricePerKg"
+            />
+            <div
+              *ngIf="
+                !addIncomingTransactionForm.get('pricePerKg')?.valid &&
+                (addIncomingTransactionForm.get('pricePerKg')?.touched ||
+                  isSubmitted)
+              "
+              class="error-block"
+            >
+              Please provide the price
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-col-2 gap-2">
+          <div class="form-group"></div>
+
+          <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input
+              type="number"
+              name="amount"
+              class="form-control"
+              formControlName="amount"
+              readonly
+            />
+            <div
+              *ngIf="
+                !addIncomingTransactionForm.get('amount')?.valid &&
+                (addIncomingTransactionForm.get('amount')?.touched ||
+                  isSubmitted)
+              "
+              class="error-block"
+            >
+              <div
+                *ngIf="
+                  addIncomingTransactionForm.get('amount')?.hasError('pattern')
+                "
+                class="error-block"
+              >
+                Amount must be a number
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="submit-wrapper">
+          <button class="btn submit-btn" type="submit">Add Transaction</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

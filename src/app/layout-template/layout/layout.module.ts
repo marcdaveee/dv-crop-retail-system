@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CustomerItemComponent } from './customers/customer-item/customer-item.component';
 import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
+import { AddIncomingTransactionComponent } from './transactions/add-incoming-transaction/add-incoming-transaction.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EditCustomerComponent } from './customers/edit-customer/edit-customer.c
     CustomerItemComponent,
     AddCustomerComponent,
     EditCustomerComponent,
+    AddIncomingTransactionComponent,
   ],
   imports: [
     CommonModule,

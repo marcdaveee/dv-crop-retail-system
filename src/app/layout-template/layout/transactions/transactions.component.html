@@ -21,7 +21,7 @@
       ></mat-icon>
     </button>
     <mat-menu #menu="matMenu" xPosition="before">
-      <a routerLink="/" mat-menu-item>Incoming Transaction</a>
+      <a routerLink="/new-incoming" mat-menu-item>Incoming Transaction</a>
       <a routerLink="/" mat-menu-item>Outgoing Transaction</a>
     </mat-menu>
   </div>
@@ -41,7 +41,9 @@
       "
       class="mb-3"
     >
-      <h3 class="mb-1">{{ monthlyTransaction.month }}</h3>
+      <div class="month-header">
+        <h2 class="month-spacing">{{ monthlyTransaction.month }}</h2>
+      </div>
 
       <div
         class="transaction-list"
@@ -51,7 +53,7 @@
           class="transaction-card"
           *ngIf="weeklyTransaction.transactions.length !== 0"
         >
-          <h4 class="mb-1">Week {{ weeklyTransaction.week }}</h4>
+          <h3 class="mb-1">Week {{ weeklyTransaction.week }}</h3>
           <div class="table-head">
             <p>Customer</p>
             <p class="text-center">Date</p>
@@ -114,7 +116,7 @@
             </div>
 
             <div class="transaction-computation">
-              <div class="fw-600">Return of Investment:</div>
+              <div class="fw-600">ROI:</div>
               <div class="text-end">
                 {{
                   getReturnOfInvestment(weeklyTransaction.transactions)

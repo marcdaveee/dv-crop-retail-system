@@ -56,15 +56,22 @@
 }
 
 .transaction-wrapper {
-  width: 80%;
+  width: 100%;
 }
 
 .transaction-body {
   /* border: 1px solid #ccc; */
   border-radius: 5px;
-  padding: 16px;
+  padding: 16px 10px;
   overflow-y: scroll;
   height: calc(100vh - 235px);
+}
+
+.month-header {
+  width: 100%;
+  background-color: #0f172a;
+  color: #fff;
+  padding: 5px;
 }
 
 .transaction-card {
@@ -85,10 +92,13 @@
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   padding: 8px 0;
+  font-size: 15px;
 }
 
 .transaction-summary {
   margin-top: 14px;
+  font-size: 15px;
+
   border-top: 1px solid #ccc;
   padding: 10px;
   display: flex;

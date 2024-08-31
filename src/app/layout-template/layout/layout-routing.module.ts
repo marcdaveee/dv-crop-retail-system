@@ -9,6 +9,7 @@ import { EditSupplierComponent } from './suppliers/edit-supplier/edit-supplier.c
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
 import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
+import { AddIncomingTransactionComponent } from './transactions/add-incoming-transaction/add-incoming-transaction.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
         component: DashboardComponent,
       },
       { path: 'transactions', component: TransactionsComponent },
+      { path: 'new-incoming', component: AddIncomingTransactionComponent },
       { path: 'customers', component: CustomersComponent },
       { path: 'customers/add-new', component: AddCustomerComponent },
       { path: 'suppliers', component: SuppliersComponent },
@@ -34,7 +36,7 @@ const routes: Routes = [
     ],
   },
 ];
- 
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

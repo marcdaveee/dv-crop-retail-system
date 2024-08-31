@@ -29,7 +29,8 @@ export class TransactionService {
     };
 
     const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth();
+    // const currentMonth = new Date().getMonth();
+    const currentMonth = new Date(transactionList[0].date).getMonth();
 
     let transactionPerMonth: ITransactionPerMonth = {
       month: '',
