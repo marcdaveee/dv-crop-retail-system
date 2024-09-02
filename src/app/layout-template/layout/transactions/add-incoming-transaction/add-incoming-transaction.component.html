@@ -50,7 +50,7 @@
               id="supplierName"
               formControlName="supplierName"
             >
-              <option value="">--- Select ---</option>
+              <option value="null">--- Select ---</option>
               <option *ngFor="let supplier of suppliers" [value]="supplier.id">
                 {{ supplier.firstName }} {{ supplier.lastName }}
               </option>
@@ -86,16 +86,7 @@
               "
               class="error-block"
             >
-              <div
-                *ngIf="
-                  addIncomingTransactionForm
-                    .get('netWeight')
-                    ?.hasError('pattern')
-                "
-                class="error-block"
-              >
-                Must be a valid Weight
-              </div>
+              Please provide the Net Weight
             </div>
           </div>
 
@@ -115,16 +106,7 @@
               "
               class="error-block"
             >
-              <div
-                *ngIf="
-                  addIncomingTransactionForm
-                    .get('moisture')
-                    ?.hasError('pattern')
-                "
-                class="error-block"
-              >
-                Moisture must be a number
-              </div>
+              Please provide the moisture value
             </div>
           </div>
         </div>
@@ -147,16 +129,7 @@
               "
               class="error-block"
             >
-              <div
-                *ngIf="
-                  addIncomingTransactionForm
-                    .get('meterKgs')
-                    ?.hasError('pattern')
-                "
-                class="error-block"
-              >
-                Meter kgs. must be a number
-              </div>
+              Meter kgs. must have a value
             </div>
           </div>
 
@@ -176,16 +149,7 @@
               "
               class="error-block"
             >
-              <div
-                *ngIf="
-                  addIncomingTransactionForm
-                    .get('noOfSacks')
-                    ?.hasError('pattern')
-                "
-                class="error-block"
-              >
-                No of sacks must be a number
-              </div>
+              Please provide the No. of Sacks
             </div>
           </div>
         </div>
@@ -208,16 +172,7 @@
               "
               class="error-block"
             >
-              <div
-                *ngIf="
-                  addIncomingTransactionForm
-                    .get('netResecada')
-                    ?.hasError('pattern')
-                "
-                class="error-block"
-              >
-                Net Resecada must be a number
-              </div>
+              Net Resecada must have a value
             </div>
           </div>
 
@@ -243,7 +198,25 @@
         </div>
 
         <div class="grid-col-2 gap-2">
-          <div class="form-group"></div>
+          <div class="form-group">
+            <label for="expenses">Expenses:</label>
+            <input
+              type="number"
+              name="expenses"
+              class="form-control"
+              formControlName="expenses"
+            />
+            <div
+              *ngIf="
+                !addIncomingTransactionForm.get('expenses')?.valid &&
+                (addIncomingTransactionForm.get('expenses')?.touched ||
+                  isSubmitted)
+              "
+              class="error-block"
+            >
+              Expenses must have a value
+            </div>
+          </div>
 
           <div class="form-group">
             <label for="amount">Amount:</label>
@@ -262,14 +235,7 @@
               "
               class="error-block"
             >
-              <div
-                *ngIf="
-                  addIncomingTransactionForm.get('amount')?.hasError('pattern')
-                "
-                class="error-block"
-              >
-                Amount must be a number
-              </div>
+              Amount must have a value
             </div>
           </div>
         </div>

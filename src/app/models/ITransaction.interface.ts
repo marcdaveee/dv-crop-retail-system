@@ -1,7 +1,10 @@
 export interface ITransaction {
   id?: number | string;
   date: string;
-  supplier: string;
+  customer?: string;
+  supplier?: string;
+  supplierId?: number | string;
+  customerId?: number | string;
   netWeight: number;
   moisture: number;
   meterKgs: number;
@@ -9,6 +12,39 @@ export interface ITransaction {
   pricePerKg: number;
   amount: number;
   noOfSacks: number;
+  expenses: number;
+  type: string;
+}
+
+export interface IIncomingTransaction {
+  id?: number | string;
+  date: string;
+  supplier: string;
+  supplierId: number | string;
+  netWeight: number;
+  moisture: number;
+  meterKgs: number;
+  netResecada: number;
+  pricePerKg: number;
+  amount: number;
+  noOfSacks: number;
+  expenses: number;
+  type: string;
+}
+
+export interface IOutgoingTransaction {
+  id?: number | string;
+  date: string;
+  customer: string;
+  customerId: number | string;
+  netWeight: number;
+  moisture: number;
+  meterKgs: number;
+  netResecada: number;
+  pricePerKg: number;
+  amount: number;
+  noOfSacks: number;
+  expenses: number;
   type: string;
 }
 

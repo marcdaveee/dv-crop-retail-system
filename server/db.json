@@ -77,7 +77,7 @@
   "transactions": [
     {
       "id": 1,
-      "date": "Sept-2-2024",
+      "date": "Aug-29-2024",
       "supplier": "Entom",
       "netWeight": 6150,
       "moisture": 4,
@@ -86,6 +86,7 @@
       "pricePerKg": 33,
       "amount": 194083,
       "noOfSacks": 149,
+      "expenses": 500,
       "type": "outgoing"
     },
 
@@ -100,6 +101,7 @@
       "pricePerKg": 30.2,
       "amount": 27995,
       "noOfSacks": 24,
+      "expenses": 500,
       "type": "incoming"
     },
     {
@@ -113,6 +115,7 @@
       "pricePerKg": 30.2,
       "amount": 25066,
       "noOfSacks": 21,
+      "expenses": 500,
       "type": "incoming"
     },
     {
@@ -126,6 +129,7 @@
       "pricePerKg": 30.2,
       "amount": 906,
       "noOfSacks": 1,
+      "expenses": 500,
       "type": "outgoing"
     },
     {
@@ -139,6 +143,7 @@
       "pricePerKg": 30,
       "amount": 31740,
       "noOfSacks": 27,
+      "expenses": 500,
       "type": "incoming"
     },
     {
@@ -152,6 +157,7 @@
       "pricePerKg": 30,
       "amount": 31740,
       "noOfSacks": 27,
+      "expenses": 500,
       "type": "incoming"
     },
     {
@@ -165,6 +171,7 @@
       "pricePerKg": 30,
       "amount": 31740,
       "noOfSacks": 27,
+      "expenses": 500,
       "type": "incoming"
     },
     {
@@ -178,6 +185,7 @@
       "pricePerKg": 30,
       "amount": 31740,
       "noOfSacks": 27,
+      "expenses": 500,
       "type": "incoming"
     },
 
@@ -192,6 +200,7 @@
       "pricePerKg": 30,
       "amount": 31740,
       "noOfSacks": 27,
+      "expenses": 500,
       "type": "incoming"
     },
     {
@@ -205,6 +214,7 @@
       "pricePerKg": 30,
       "amount": 31740,
       "noOfSacks": 27,
+      "expenses": 500,
       "type": "incoming"
     }
   ]

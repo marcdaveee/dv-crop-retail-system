@@ -3,6 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TransactionService } from '../../../../services/transaction.service';
 import { SupplierService } from '../../../../services/supplier.service';
 import { ISupplier } from '../../../../models/ISupplier.interface';
+import {
+  IIncomingTransaction,
+  ITransaction,
+} from '../../../../models/ITransaction.interface';
 
 @Component({
   selector: 'app-add-incoming-transaction',
@@ -25,30 +29,42 @@ export class AddIncomingTransactionComponent implements OnInit {
       netWeight: new FormControl(0, [
         Validators.required,
         Validators.pattern('^[0-9]*$'),
+        Validators.min(1),
       ]),
       moisture: new FormControl(0, [
         Validators.required,
         Validators.pattern('^[0-9].*$'),
+        Validators.min(1),
       ]),
       meterKgs: new FormControl(0, [
         Validators.required,
         Validators.pattern('^[0-9].*$'),
+        Validators.min(1),
       ]),
       netResecada: new FormControl(0, [
         Validators.required,
         Validators.pattern('^[0-9].*$'),
+        Validators.min(1),
       ]),
       pricePerKg: new FormControl(0, [
         Validators.required,
         Validators.pattern('^[0-9].*$'),
+        Validators.min(1),
       ]),
       amount: new FormControl(0, [
         Validators.required,
         Validators.pattern('^[0-9].*$'),
+        Validators.min(1),
+      ]),
+      expenses: new FormControl(0, [
+        Validators.required,
+        Validators.pattern('^[0-9].*$'),
+        Validators.min(1),
       ]),
       noOfSacks: new FormControl(0, [
         Validators.required,
         Validators.pattern('^[0-9]*$'),
+        Validators.min(1),
       ]),
     });
   }
@@ -66,6 +82,7 @@ export class AddIncomingTransactionComponent implements OnInit {
   }
 
   onChanges(): void {
+    // Do following computation when Net Weight Value is Changed
     this.addIncomingTransactionForm.controls[
       'netWeight'
     ].valueChanges.subscribe((val) => {
@@ -81,9 +98,18 @@ export class AddIncomingTransactionComponent implements OnInit {
           this.addIncomingTransactionForm.value.netWeight -
           this.addIncomingTransactionForm.value.meterKgs,
       });
+
+      this.addIncomingTransactionForm.patchValue({
+        netResecada: (
+          this.addIncomingTransactionForm.value.netResecada -
+          Math.round(this.addIncomingTransactionForm.value.noOfSacks / 6)
+        ).toFixed(0),
+      });
+
       console.log(this.addIncomingTransactionForm.value.meterKgs);
     });
 
+    // Do following computation when Moisture Value is Changed
     this.addIncomingTransactionForm.controls['moisture'].valueChanges.subscribe(
       (val) => {
         this.addIncomingTransactionForm.patchValue({
@@ -97,10 +123,25 @@ export class AddIncomingTransactionComponent implements OnInit {
             this.addIncomingTransactionForm.value.netWeight -
             this.addIncomingTransactionForm.value.meterKgs,
         });
+
+        this.addIncomingTransactionForm.patchValue({
+          netResecada: (
+            this.addIncomingTransactionForm.value.netResecada -
+            Math.round(this.addIncomingTransactionForm.value.noOfSacks / 6)
+          ).toFixed(0),
+        });
+
+        // this.addIncomingTransactionForm.patchValue({
+        //   netResecada:
+        //     this.addIncomingTransactionForm.value.netResecada -
+        //     Math.floor(this.addIncomingTransactionForm.value.noOfSacks / 6),
+        // });
+
         console.log(this.addIncomingTransactionForm.value.meterKgs);
       }
     );
 
+    // Do following computation when Net Resecada Value is Changed
     this.addIncomingTransactionForm.controls[
       'netResecada'
     ].valueChanges.subscribe((val) => {
@@ -109,8 +150,16 @@ export class AddIncomingTransactionComponent implements OnInit {
           val * this.addIncomingTransactionForm.value.pricePerKg
         ).toFixed(2),
       });
+
+      this.addIncomingTransactionForm.patchValue({
+        amount: (
+          parseFloat(this.addIncomingTransactionForm.value.amount) +
+          parseFloat(this.addIncomingTransactionForm.value.expenses)
+        ).toFixed(2),
+      });
     });
 
+    // Do following computation when Net Price Per Kg Value is Changed
     this.addIncomingTransactionForm.controls[
       'pricePerKg'
     ].valueChanges.subscribe((val) => {
@@ -119,7 +168,54 @@ export class AddIncomingTransactionComponent implements OnInit {
           this.addIncomingTransactionForm.value.netResecada * val
         ).toFixed(2),
       });
+
+      this.addIncomingTransactionForm.patchValue({
+        amount: (
+          parseFloat(this.addIncomingTransactionForm.value.amount) +
+          parseFloat(this.addIncomingTransactionForm.value.expenses)
+        ).toFixed(2),
+      });
     });
+
+    // Do following computation when No of Sacks Value is Changed
+    this.addIncomingTransactionForm.controls[
+      'noOfSacks'
+    ].valueChanges.subscribe((val) => {
+      this.addIncomingTransactionForm.patchValue({
+        netResecada:
+          this.addIncomingTransactionForm.value.netWeight -
+          this.addIncomingTransactionForm.value.meterKgs,
+      });
+
+      this.addIncomingTransactionForm.patchValue({
+        netResecada: (
+          this.addIncomingTransactionForm.value.netResecada -
+          Math.round(val / 6)
+        ).toFixed(0),
+      });
+
+      console.log('No of sacks /6: ', Math.round(val / 6));
+    });
+
+    // Do the following computation when Expenses field value is changed
+    this.addIncomingTransactionForm.controls['expenses'].valueChanges.subscribe(
+      (val) => {
+        this.addIncomingTransactionForm.patchValue({
+          amount: (
+            this.addIncomingTransactionForm.value.netResecada *
+            this.addIncomingTransactionForm.value.pricePerKg
+          ).toFixed(2),
+        });
+
+        this.addIncomingTransactionForm.patchValue({
+          amount: (
+            parseFloat(this.addIncomingTransactionForm.value.amount) +
+            parseFloat(val)
+          ).toFixed(2),
+        });
+        console.log(this.addIncomingTransactionForm.value.amount);
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -139,6 +235,21 @@ export class AddIncomingTransactionComponent implements OnInit {
     this.isSubmitted = true;
     if (this.addIncomingTransactionForm.valid) {
       console.log(this.addIncomingTransactionForm.value);
+      const newIncomingTransaction: IIncomingTransaction = {
+        date: this.addIncomingTransactionForm.value.date,
+        supplier: this.addIncomingTransactionForm.value.supplierName,
+        supplierId: this.addIncomingTransactionForm.value.supplierName,
+        netWeight: this.addIncomingTransactionForm.value.netWeight,
+        moisture: this.addIncomingTransactionForm.value.moisture,
+        meterKgs: this.addIncomingTransactionForm.value.meterKgs,
+        netResecada: this.addIncomingTransactionForm.value.netResecada,
+        pricePerKg: this.addIncomingTransactionForm.value.pricePerKg,
+        amount: this.addIncomingTransactionForm.value.amount,
+        noOfSacks: this.addIncomingTransactionForm.value.noOfSacks,
+        expenses: this.addIncomingTransactionForm.value.expenses,
+        type: 'incoming',
+      };
+      console.log('New Incoming Transaction: ', newIncomingTransaction);
     }
   }
 }
