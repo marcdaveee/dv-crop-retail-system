@@ -73,7 +73,6 @@
       "email": "Global.ph@gmail.com"
     }
   ],
-
   "transactions": [
     {
       "id": 1,
@@ -89,7 +88,6 @@
       "expenses": 500,
       "type": "outgoing"
     },
-
     {
       "id": 2,
       "date": "Aug-26-2024",
@@ -188,7 +186,6 @@
       "expenses": 500,
       "type": "incoming"
     },
-
     {
       "id": 9,
       "date": "Jun-20-2024",
@@ -216,6 +213,21 @@
       "noOfSacks": 27,
       "expenses": 500,
       "type": "incoming"
+    },
+    {
+      "date": "2024-09-02",
+      "supplier": "1",
+      "supplierId": "1",
+      "netWeight": 900,
+      "moisture": 7,
+      "meterKgs": "63",
+      "netResecada": "833",
+      "pricePerKg": 30.2,
+      "amount": "25656.60",
+      "noOfSacks": 24,
+      "expenses": 500,
+      "type": "incoming",
+      "id": 11
     }
   ]
 }

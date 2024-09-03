@@ -21,11 +21,16 @@ export class TransactionsComponent {
     this._transactionService.getTransactions().subscribe({
       next: (res) => {
         this.transactionList = res;
+        // this.transactionList.sort(
+        //   (a, b) => new Date(b.date).getMonth() - new Date(a.date).getMonth()
+        // );
+        // console.log('After sort: ', this.transactionList);
+        console.log('Response: ', res);
         this.groupedTransactions =
           this._transactionService.groupTransactionByMonth(
             this.transactionList
           );
-        console.log(res);
+
         this.isLoading = false;
       },
       error: (err) => {
@@ -39,7 +44,7 @@ export class TransactionsComponent {
   getTotalCapital(transactions: ITransaction[]) {
     let total = 0;
     transactions.forEach((t) => {
-      if (t.type === 'incoming') {
+      if (t.type === 0) {
         total += t.amount;
       }
     });
@@ -49,7 +54,7 @@ export class TransactionsComponent {
   getTotalRevenues(transaction: ITransaction[]) {
     let total = 0;
     transaction.forEach((t) => {
-      if (t.type === 'outgoing') {
+      if (t.type === 1) {
         total += t.amount;
       }
     });

@@ -71,7 +71,14 @@
             class="table-row"
             *ngFor="let transaction of weeklyTransaction.transactions"
           >
-            <p>{{ transaction.supplier }}</p>
+            <div>
+              <p *ngIf="transaction.supplier !== null" else showCustomer>
+                {{ transaction.supplier?.firstName }}
+                {{ transaction.supplier?.lastName }}
+              </p>
+              <p #showCustomer>{{ transaction.customer?.name }}</p>
+            </div>
+
             <p class="text-center">{{ transaction.date | date }}</p>
             <p class="text-center">{{ transaction.netWeight }}</p>
             <p class="text-center">{{ transaction.moisture }}</p>
@@ -87,29 +94,28 @@
             <div class="flex">
               <div
                 class="text-center text-sm p-1"
-                [class]="
-                  transaction.type == 'incoming' ? 'incoming' : 'outgoing'
-                "
+                [class]="transaction.type == 0 ? 'incoming' : 'outgoing'"
               ></div>
             </div>
           </div>
 
           <div class="transaction-summary">
             <div class="transaction-computation">
-              <div class="fw-600">Total Capital:</div>
-              <div class="text-end">
-                {{
-                  getTotalCapital(weeklyTransaction.transactions)
-                    | currency : " Php "
-                }}
-              </div>
-            </div>
-            <div class="transaction-computation">
               <div class="fw-600">Total Revenue:</div>
 
               <div class="text-end">
                 {{
                   getTotalRevenues(weeklyTransaction.transactions)
+                    | currency : " Php "
+                }}
+              </div>
+            </div>
+
+            <div class="transaction-computation">
+              <div class="fw-600">Total Capital:</div>
+              <div class="text-end">
+                {{
+                  getTotalCapital(weeklyTransaction.transactions)
                     | currency : " Php "
                 }}
               </div>

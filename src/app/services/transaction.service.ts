@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
   IGroupedTransaction,
+  IIncomingTransaction,
   ITransaction,
   ITransactionPerMonth,
   ITransactionPerWeek,
@@ -15,10 +16,17 @@ import { DatePipe } from '@angular/common';
 export class TransactionService {
   constructor(private _http: HttpClient, private _datePipe: DatePipe) {}
 
-  private apiUrl = 'http://localhost:5000/transactions';
+  private apiUrl = 'https://localhost:7257/api/transactions';
 
   getTransactions(): Observable<ITransaction[]> {
     return this._http.get<ITransaction[]>(this.apiUrl);
+    // GET /posts?_sort=views&_order=asc
+  }
+
+  addIncomingTransaction(
+    newTransaction: IIncomingTransaction
+  ): Observable<IIncomingTransaction> {
+    return this._http.post<IIncomingTransaction>(this.apiUrl, newTransaction);
   }
 
   groupTransactionByMonth(
@@ -95,20 +103,5 @@ export class TransactionService {
     console.log('GroupedTransac: ', groupedTransactions);
 
     return groupedTransactions;
-  }
-
-  getISOWeekInMonth(date: string) {
-    var d = new Date(date);
-    var day = d.getDay();
-    var dayOfJan1 = new Date('Jan-1-' + d.getFullYear()).getDay();
-    console.log('day of jan 1: ', dayOfJan1);
-
-    var weekNumber = Math.ceil((d.getDate() + 6) / 7);
-
-    if (day < dayOfJan1) {
-      weekNumber += 1;
-    }
-
-    return weekNumber;
   }
 }

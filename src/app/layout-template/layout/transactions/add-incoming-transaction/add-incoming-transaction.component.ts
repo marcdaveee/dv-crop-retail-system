@@ -7,6 +7,7 @@ import {
   IIncomingTransaction,
   ITransaction,
 } from '../../../../models/ITransaction.interface';
+import { AlertService } from '../../../../services/alert.service';
 
 @Component({
   selector: 'app-add-incoming-transaction',
@@ -21,7 +22,8 @@ export class AddIncomingTransactionComponent implements OnInit {
 
   constructor(
     private _transactionService: TransactionService,
-    private _supplierService: SupplierService
+    private _supplierService: SupplierService,
+    private _alertService: AlertService
   ) {
     this.addIncomingTransactionForm = new FormGroup({
       supplierName: new FormControl(null, Validators.required),
@@ -197,25 +199,25 @@ export class AddIncomingTransactionComponent implements OnInit {
       console.log('No of sacks /6: ', Math.round(val / 6));
     });
 
-    // Do the following computation when Expenses field value is changed
-    this.addIncomingTransactionForm.controls['expenses'].valueChanges.subscribe(
-      (val) => {
-        this.addIncomingTransactionForm.patchValue({
-          amount: (
-            this.addIncomingTransactionForm.value.netResecada *
-            this.addIncomingTransactionForm.value.pricePerKg
-          ).toFixed(2),
-        });
+    // // Do the following computation when Expenses field value is changed
+    // this.addIncomingTransactionForm.controls['expenses'].valueChanges.subscribe(
+    //   (val) => {
+    //     this.addIncomingTransactionForm.patchValue({
+    //       amount: (
+    //         this.addIncomingTransactionForm.value.netResecada *
+    //         this.addIncomingTransactionForm.value.pricePerKg
+    //       ).toFixed(2),
+    //     });
 
-        this.addIncomingTransactionForm.patchValue({
-          amount: (
-            parseFloat(this.addIncomingTransactionForm.value.amount) +
-            parseFloat(val)
-          ).toFixed(2),
-        });
-        console.log(this.addIncomingTransactionForm.value.amount);
-      }
-    );
+    //     this.addIncomingTransactionForm.patchValue({
+    //       amount: (
+    //         parseFloat(this.addIncomingTransactionForm.value.amount) +
+    //         parseFloat(val)
+    //       ).toFixed(2),
+    //     });
+    //     console.log(this.addIncomingTransactionForm.value.amount);
+    //   }
+    // );
   }
 
   ngOnInit(): void {
@@ -236,7 +238,9 @@ export class AddIncomingTransactionComponent implements OnInit {
     if (this.addIncomingTransactionForm.valid) {
       console.log(this.addIncomingTransactionForm.value);
       const newIncomingTransaction: IIncomingTransaction = {
-        date: this.addIncomingTransactionForm.value.date,
+        date: new Date(
+          this.addIncomingTransactionForm.value.date
+        ).toISOString(),
         supplier: this.addIncomingTransactionForm.value.supplierName,
         supplierId: this.addIncomingTransactionForm.value.supplierName,
         netWeight: this.addIncomingTransactionForm.value.netWeight,
@@ -247,8 +251,25 @@ export class AddIncomingTransactionComponent implements OnInit {
         amount: this.addIncomingTransactionForm.value.amount,
         noOfSacks: this.addIncomingTransactionForm.value.noOfSacks,
         expenses: this.addIncomingTransactionForm.value.expenses,
-        type: 'incoming',
+        type: 0,
       };
+
+      this._transactionService
+        .addIncomingTransaction(newIncomingTransaction)
+        .subscribe({
+          next: (res) => {
+            console.log('Res: ', res);
+            this._alertService.showAlertSuccess(
+              'Incoming Transaction was added.'
+            );
+          },
+          error: (err) => {
+            console.log('error occured', err);
+            this._alertService.showAlertSuccess(
+              'Error Occured. Transaction was not added'
+            );
+          },
+        });
       console.log('New Incoming Transaction: ', newIncomingTransaction);
     }
   }

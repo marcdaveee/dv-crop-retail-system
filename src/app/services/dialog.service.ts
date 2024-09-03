@@ -16,4 +16,8 @@ export class DialogService {
       disableClose: true,
     });
   }
+
+  openConfirmSaveDialog(msg: string) {
+    return this.dialog.open();
+  }
 }

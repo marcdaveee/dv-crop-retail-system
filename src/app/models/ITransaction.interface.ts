@@ -1,8 +1,11 @@
+import { ICustomer } from './ICustomer.interface';
+import { ISupplier } from './ISupplier.interface';
+
 export interface ITransaction {
   id?: number | string;
   date: string;
-  customer?: string;
-  supplier?: string;
+  customer?: ICustomer;
+  supplier?: ISupplier;
   supplierId?: number | string;
   customerId?: number | string;
   netWeight: number;
@@ -13,7 +16,7 @@ export interface ITransaction {
   amount: number;
   noOfSacks: number;
   expenses: number;
-  type: string;
+  type: number;
 }
 
 export interface IIncomingTransaction {
@@ -29,7 +32,7 @@ export interface IIncomingTransaction {
   amount: number;
   noOfSacks: number;
   expenses: number;
-  type: string;
+  type: number; // 0 - Incoming, 1 - Outgoing
 }
 
 export interface IOutgoingTransaction {
@@ -45,7 +48,7 @@ export interface IOutgoingTransaction {
   amount: number;
   noOfSacks: number;
   expenses: number;
-  type: string;
+  type: number; // 0 - Incoming, 1 - Outgoing
 }
 
 // export interface ITransactionPerMonth {
