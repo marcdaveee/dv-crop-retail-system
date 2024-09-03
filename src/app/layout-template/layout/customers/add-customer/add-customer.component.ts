@@ -4,7 +4,6 @@ import { AlertService } from '../../../../services/alert.service';
 import { CustomerService } from '../../../../services/customer.service';
 import { Router } from '@angular/router';
 import { ICustomer } from '../../../../models/ICustomer.interface';
-import { DialogService } from '../../../../services/dialog.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -19,8 +18,7 @@ export class AddCustomerComponent {
   constructor(
     private _customerService: CustomerService,
     private _alertService: AlertService,
-    private _router: Router,
-    private _dialogService: DialogService
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +31,6 @@ export class AddCustomerComponent {
   }
 
   onSubmit() {
-    this._dialogService.openConfirmDialog('');
     this.isFormSubmitted = true;
     console.log(this.addCustomerForm.value);
 

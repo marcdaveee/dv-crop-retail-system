@@ -5,6 +5,7 @@ import {
   ITransaction,
 } from '../../../models/ITransaction.interface';
 import { TransactionService } from '../../../services/transaction.service';
+import { DialogService } from '../../../services/dialog.service';
 
 @Component({
   selector: 'app-transactions',

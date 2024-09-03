@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDeleteComponent } from '../layout-template/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmSaveComponent } from '../layout-template/shared/dialogs/confirm-save/confirm-save.component';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,6 +19,12 @@ export class DialogService {
   }
 
   openConfirmSaveDialog(msg: string) {
-    return this.dialog.open();
+    return this.dialog.open(ConfirmSaveComponent, {
+      width: '500px',
+      data: {
+        msg: msg,
+      },
+      disableClose: true,
+    });
   }
 }

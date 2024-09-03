@@ -1,0 +1,10 @@
+<div class="header">
+  <h2 mat-dialog-title>Add Transaction</h2>
+  <mat-dialog-content>{{ data.msg }}</mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="false">Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+      Yes, it is all correct
+    </button>
+  </mat-dialog-actions>
+</div>

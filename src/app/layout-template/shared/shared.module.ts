@@ -9,6 +9,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SuccessAlertComponent } from './alerts/success-alert/success-alert.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { ConfirmSaveComponent } from './dialogs/confirm-save/confirm-save.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
     HeaderComponent,
     ConfirmDeleteComponent,
     SuccessAlertComponent,
+    ConfirmSaveComponent,
   ],
   imports: [
     CommonModule,

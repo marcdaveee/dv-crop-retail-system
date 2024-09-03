@@ -8,6 +8,7 @@ import {
   ITransaction,
 } from '../../../../models/ITransaction.interface';
 import { AlertService } from '../../../../services/alert.service';
+import { DialogService } from '../../../../services/dialog.service';
 
 @Component({
   selector: 'app-add-incoming-transaction',
@@ -23,7 +24,8 @@ export class AddIncomingTransactionComponent implements OnInit {
   constructor(
     private _transactionService: TransactionService,
     private _supplierService: SupplierService,
-    private _alertService: AlertService
+    private _alertService: AlertService,
+    private _dialogService: DialogService
   ) {
     this.addIncomingTransactionForm = new FormGroup({
       supplierName: new FormControl(null, Validators.required),
@@ -236,41 +238,51 @@ export class AddIncomingTransactionComponent implements OnInit {
   onSubmit() {
     this.isSubmitted = true;
     if (this.addIncomingTransactionForm.valid) {
-      console.log(this.addIncomingTransactionForm.value);
-      const newIncomingTransaction: IIncomingTransaction = {
-        date: new Date(
-          this.addIncomingTransactionForm.value.date
-        ).toISOString(),
-        supplier: this.addIncomingTransactionForm.value.supplierName,
-        supplierId: this.addIncomingTransactionForm.value.supplierName,
-        netWeight: this.addIncomingTransactionForm.value.netWeight,
-        moisture: this.addIncomingTransactionForm.value.moisture,
-        meterKgs: this.addIncomingTransactionForm.value.meterKgs,
-        netResecada: this.addIncomingTransactionForm.value.netResecada,
-        pricePerKg: this.addIncomingTransactionForm.value.pricePerKg,
-        amount: this.addIncomingTransactionForm.value.amount,
-        noOfSacks: this.addIncomingTransactionForm.value.noOfSacks,
-        expenses: this.addIncomingTransactionForm.value.expenses,
-        type: 0,
-      };
+      this._dialogService
+        .openConfirmSaveDialog(
+          'Are you sure that all of the details are correct?'
+        )
+        .afterClosed()
+        .subscribe((result) => {
+          if (result) {
+            console.log(this.addIncomingTransactionForm.value);
+            const newIncomingTransaction: IIncomingTransaction = {
+              date: new Date(
+                this.addIncomingTransactionForm.value.date
+              ).toISOString(),
+              supplier: this.addIncomingTransactionForm.value.supplierName,
+              supplierId: this.addIncomingTransactionForm.value.supplierName,
+              netWeight: this.addIncomingTransactionForm.value.netWeight,
+              moisture: this.addIncomingTransactionForm.value.moisture,
+              meterKgs: this.addIncomingTransactionForm.value.meterKgs,
+              netResecada: this.addIncomingTransactionForm.value.netResecada,
+              pricePerKg:
+                this.addIncomingTransactionForm.value.pricePerKg.toFixed(1),
+              amount: this.addIncomingTransactionForm.value.amount,
+              noOfSacks: this.addIncomingTransactionForm.value.noOfSacks,
+              expenses: this.addIncomingTransactionForm.value.expenses,
+              type: 0,
+            };
 
-      this._transactionService
-        .addIncomingTransaction(newIncomingTransaction)
-        .subscribe({
-          next: (res) => {
-            console.log('Res: ', res);
-            this._alertService.showAlertSuccess(
-              'Incoming Transaction was added.'
-            );
-          },
-          error: (err) => {
-            console.log('error occured', err);
-            this._alertService.showAlertSuccess(
-              'Error Occured. Transaction was not added'
-            );
-          },
+            this._transactionService
+              .addIncomingTransaction(newIncomingTransaction)
+              .subscribe({
+                next: (res) => {
+                  console.log('Res: ', res);
+                  this._alertService.showAlertSuccess(
+                    'Incoming Transaction was added.'
+                  );
+                },
+                error: (err) => {
+                  console.log('error occured', err);
+                  this._alertService.showAlertSuccess(
+                    'Error Occured. Transaction was not added'
+                  );
+                },
+              });
+            console.log('New Incoming Transaction: ', newIncomingTransaction);
+          }
         });
-      console.log('New Incoming Transaction: ', newIncomingTransaction);
     }
   }
 }
