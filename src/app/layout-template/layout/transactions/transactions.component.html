@@ -139,14 +139,18 @@
           <div class="fw-600">Total Revenue:</div>
 
           <div class="text-end">
-            {{ getMonthlySummary(monthlyTransaction) | currency : " Php " }}
+            {{
+              getMonthlyRevenue(monthlyTransaction.transactionPerWeek)
+                | currency : " Php "
+            }}
           </div>
         </div>
 
         <div class="transaction-computation">
           <div class="fw-600">Total Capital:</div>
-        <div class="text-end"          {{
-              getTotalCapital(monthlyTransaction.transactionPerWeek)
+          <div class="text-end">
+            {{
+              getMonthlyCapital(monthlyTransaction.transactionPerWeek)
                 | currency : " Php "
             }}
           </div>
@@ -156,7 +160,7 @@
           <div class="fw-600">ROI:</div>
           <div class="text-end">
             {{
-              getReturnOfInvestment(monthlyTransaction.transactionPerWeek)
+              getMonthlyRoi(monthlyTransaction.transactionPerWeek)
                 | currency : " Php "
             }}
           </div>

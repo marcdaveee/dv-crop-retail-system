@@ -72,19 +72,33 @@ export class TransactionsComponent {
     return returnOfInvestment;
   }
 
-  getMonthlySummary(weeklyTransactions: ITransactionPerWeek[]) {
-    const montlySummary = {
-      capital: 0,
-      revenue: 0,
-      roi: 0,
-    };
+  getMonthlyCapital(weeklyTransactions: ITransactionPerWeek[]) {
+    let monthlyCapital = 0;
 
     weeklyTransactions.forEach((wt) => {
-      montlySummary.revenue += this.getTotalRevenues(wt.transactions);
-      montlySummary.capital += this.getTotalCapital(wt.transactions);
-      montlySummary.roi += this.getReturnOfInvestment(wt.transactions);
+      monthlyCapital += this.getTotalCapital(wt.transactions);
     });
 
-    return montlySummary;
+    return monthlyCapital;
+  }
+
+  getMonthlyRevenue(weeklyTransactions: ITransactionPerWeek[]) {
+    let monthlyRevenue = 0;
+
+    weeklyTransactions.forEach((wt) => {
+      monthlyRevenue += this.getTotalRevenues(wt.transactions);
+    });
+
+    return monthlyRevenue;
+  }
+
+  getMonthlyRoi(weeklyTransactions: ITransactionPerWeek[]) {
+    let monthlyRoi = 0;
+
+    weeklyTransactions.forEach((wt) => {
+      monthlyRoi += this.getReturnOfInvestment(wt.transactions);
+    });
+
+    return monthlyRoi;
   }
 }
