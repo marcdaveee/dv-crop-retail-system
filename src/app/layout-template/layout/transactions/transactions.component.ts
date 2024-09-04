@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {
   IGroupedTransaction,
   ITransaction,
+  ITransactionPerWeek,
 } from '../../../models/ITransaction.interface';
 import { TransactionService } from '../../../services/transaction.service';
 import { DialogService } from '../../../services/dialog.service';
@@ -69,5 +70,21 @@ export class TransactionsComponent {
 
     returnOfInvestment = revenue - capital;
     return returnOfInvestment;
+  }
+
+  getMonthlySummary(weeklyTransactions: ITransactionPerWeek[]) {
+    const montlySummary = {
+      capital: 0,
+      revenue: 0,
+      roi: 0,
+    };
+
+    weeklyTransactions.forEach((wt) => {
+      montlySummary.revenue += this.getTotalRevenues(wt.transactions);
+      montlySummary.capital += this.getTotalCapital(wt.transactions);
+      montlySummary.roi += this.getReturnOfInvestment(wt.transactions);
+    });
+
+    return montlySummary;
   }
 }

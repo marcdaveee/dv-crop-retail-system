@@ -18,6 +18,7 @@ import { CustomerItemComponent } from './customers/customer-item/customer-item.c
 import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
 import { AddIncomingTransactionComponent } from './transactions/add-incoming-transaction/add-incoming-transaction.component';
+import { AddOutgoingTransactionComponent } from './transactions/add-outgoing-transaction/add-outgoing-transaction.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AddIncomingTransactionComponent } from './transactions/add-incoming-tra
     AddCustomerComponent,
     EditCustomerComponent,
     AddIncomingTransactionComponent,
+    AddOutgoingTransactionComponent,
   ],
   imports: [
     CommonModule,

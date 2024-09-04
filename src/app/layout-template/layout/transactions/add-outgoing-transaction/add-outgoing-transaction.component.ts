@@ -4,33 +4,35 @@ import { TransactionService } from '../../../../services/transaction.service';
 import { SupplierService } from '../../../../services/supplier.service';
 import { ISupplier } from '../../../../models/ISupplier.interface';
 import {
-  IIncomingTransaction,
+  IOutgoingTransaction,
   ITransaction,
 } from '../../../../models/ITransaction.interface';
 import { AlertService } from '../../../../services/alert.service';
 import { DialogService } from '../../../../services/dialog.service';
+import { ICustomer } from '../../../../models/ICustomer.interface';
+import { CustomerService } from '../../../../services/customer.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-incoming-transaction',
-  templateUrl: './add-incoming-transaction.component.html',
-  styleUrl: './add-incoming-transaction.component.css',
+  selector: 'app-add-outgoing-transaction',
+  templateUrl: './add-outgoing-transaction.component.html',
+  styleUrl: './add-outgoing-transaction.component.css',
 })
-export class AddIncomingTransactionComponent implements OnInit {
-  addIncomingTransactionForm!: FormGroup;
-  suppliers: ISupplier[] = [];
+export class AddOutgoingTransactionComponent {
+  addOutgoingTransactionForm!: FormGroup;
+  customers: ICustomer[] = [];
 
   isSubmitted = false;
 
   constructor(
     private _transactionService: TransactionService,
-    private _supplierService: SupplierService,
+    private _customerService: CustomerService,
     private _alertService: AlertService,
     private _dialogService: DialogService,
     private _router: Router
   ) {
-    this.addIncomingTransactionForm = new FormGroup({
-      supplierName: new FormControl(null, Validators.required),
+    this.addOutgoingTransactionForm = new FormGroup({
+      customerName: new FormControl(null, Validators.required),
       date: new FormControl(null, Validators.required),
       netWeight: new FormControl(0, [
         Validators.required,
@@ -76,64 +78,64 @@ export class AddIncomingTransactionComponent implements OnInit {
   }
 
   onCalculateMeterKg() {
-    this.addIncomingTransactionForm.patchValue({
+    this.addOutgoingTransactionForm.patchValue({
       meterKgs:
-        (this.addIncomingTransactionForm.value.moisture / 100) *
-        this.addIncomingTransactionForm.value.netWeight,
+        (this.addOutgoingTransactionForm.value.moisture / 100) *
+        this.addOutgoingTransactionForm.value.netWeight,
     });
     let total =
-      (this.addIncomingTransactionForm.value.moisture / 100) *
-      this.addIncomingTransactionForm.value.netWeight;
+      (this.addOutgoingTransactionForm.value.moisture / 100) *
+      this.addOutgoingTransactionForm.value.netWeight;
     console.log(total);
   }
 
   onChanges(): void {
     // Do following computation when Net Weight Value is Changed
-    this.addIncomingTransactionForm.controls[
+    this.addOutgoingTransactionForm.controls[
       'netWeight'
     ].valueChanges.subscribe((val) => {
-      this.addIncomingTransactionForm.patchValue({
+      this.addOutgoingTransactionForm.patchValue({
         meterKgs: (
-          (this.addIncomingTransactionForm.value.moisture / 100) *
+          (this.addOutgoingTransactionForm.value.moisture / 100) *
           val
         ).toFixed(0),
       });
 
-      this.addIncomingTransactionForm.patchValue({
+      this.addOutgoingTransactionForm.patchValue({
         netResecada:
-          this.addIncomingTransactionForm.value.netWeight -
-          this.addIncomingTransactionForm.value.meterKgs,
+          this.addOutgoingTransactionForm.value.netWeight -
+          this.addOutgoingTransactionForm.value.meterKgs,
       });
 
-      this.addIncomingTransactionForm.patchValue({
+      this.addOutgoingTransactionForm.patchValue({
         netResecada: (
-          this.addIncomingTransactionForm.value.netResecada -
-          Math.round(this.addIncomingTransactionForm.value.noOfSacks / 6)
+          this.addOutgoingTransactionForm.value.netResecada -
+          Math.round(this.addOutgoingTransactionForm.value.noOfSacks / 6)
         ).toFixed(0),
       });
 
-      console.log(this.addIncomingTransactionForm.value.meterKgs);
+      console.log(this.addOutgoingTransactionForm.value.meterKgs);
     });
 
     // Do following computation when Moisture Value is Changed
-    this.addIncomingTransactionForm.controls['moisture'].valueChanges.subscribe(
+    this.addOutgoingTransactionForm.controls['moisture'].valueChanges.subscribe(
       (val) => {
-        this.addIncomingTransactionForm.patchValue({
+        this.addOutgoingTransactionForm.patchValue({
           meterKgs: (
             (val / 100) *
-            this.addIncomingTransactionForm.value.netWeight
+            this.addOutgoingTransactionForm.value.netWeight
           ).toFixed(0),
         });
-        this.addIncomingTransactionForm.patchValue({
+        this.addOutgoingTransactionForm.patchValue({
           netResecada:
-            this.addIncomingTransactionForm.value.netWeight -
-            this.addIncomingTransactionForm.value.meterKgs,
+            this.addOutgoingTransactionForm.value.netWeight -
+            this.addOutgoingTransactionForm.value.meterKgs,
         });
 
-        this.addIncomingTransactionForm.patchValue({
+        this.addOutgoingTransactionForm.patchValue({
           netResecada: (
-            this.addIncomingTransactionForm.value.netResecada -
-            Math.round(this.addIncomingTransactionForm.value.noOfSacks / 6)
+            this.addOutgoingTransactionForm.value.netResecada -
+            Math.round(this.addOutgoingTransactionForm.value.noOfSacks / 6)
           ).toFixed(0),
         });
 
@@ -143,59 +145,59 @@ export class AddIncomingTransactionComponent implements OnInit {
         //     Math.floor(this.addIncomingTransactionForm.value.noOfSacks / 6),
         // });
 
-        console.log(this.addIncomingTransactionForm.value.meterKgs);
+        console.log(this.addOutgoingTransactionForm.value.meterKgs);
       }
     );
 
     // Do following computation when Net Resecada Value is Changed
-    this.addIncomingTransactionForm.controls[
+    this.addOutgoingTransactionForm.controls[
       'netResecada'
     ].valueChanges.subscribe((val) => {
-      this.addIncomingTransactionForm.patchValue({
+      this.addOutgoingTransactionForm.patchValue({
         amount: (
-          val * this.addIncomingTransactionForm.value.pricePerKg
+          val * this.addOutgoingTransactionForm.value.pricePerKg
         ).toFixed(2),
       });
 
-      this.addIncomingTransactionForm.patchValue({
+      this.addOutgoingTransactionForm.patchValue({
         amount: (
-          parseFloat(this.addIncomingTransactionForm.value.amount) +
-          parseFloat(this.addIncomingTransactionForm.value.expenses)
+          parseFloat(this.addOutgoingTransactionForm.value.amount) +
+          parseFloat(this.addOutgoingTransactionForm.value.expenses)
         ).toFixed(2),
       });
     });
 
     // Do following computation when Net Price Per Kg Value is Changed
-    this.addIncomingTransactionForm.controls[
+    this.addOutgoingTransactionForm.controls[
       'pricePerKg'
     ].valueChanges.subscribe((val) => {
-      this.addIncomingTransactionForm.patchValue({
+      this.addOutgoingTransactionForm.patchValue({
         amount: (
-          this.addIncomingTransactionForm.value.netResecada * val
+          this.addOutgoingTransactionForm.value.netResecada * val
         ).toFixed(2),
       });
 
-      this.addIncomingTransactionForm.patchValue({
+      this.addOutgoingTransactionForm.patchValue({
         amount: (
-          parseFloat(this.addIncomingTransactionForm.value.amount) +
-          parseFloat(this.addIncomingTransactionForm.value.expenses)
+          parseFloat(this.addOutgoingTransactionForm.value.amount) +
+          parseFloat(this.addOutgoingTransactionForm.value.expenses)
         ).toFixed(2),
       });
     });
 
     // Do following computation when No of Sacks Value is Changed
-    this.addIncomingTransactionForm.controls[
+    this.addOutgoingTransactionForm.controls[
       'noOfSacks'
     ].valueChanges.subscribe((val) => {
-      this.addIncomingTransactionForm.patchValue({
+      this.addOutgoingTransactionForm.patchValue({
         netResecada:
-          this.addIncomingTransactionForm.value.netWeight -
-          this.addIncomingTransactionForm.value.meterKgs,
+          this.addOutgoingTransactionForm.value.netWeight -
+          this.addOutgoingTransactionForm.value.meterKgs,
       });
 
-      this.addIncomingTransactionForm.patchValue({
+      this.addOutgoingTransactionForm.patchValue({
         netResecada: (
-          this.addIncomingTransactionForm.value.netResecada -
+          this.addOutgoingTransactionForm.value.netResecada -
           Math.round(val / 6)
         ).toFixed(0),
       });
@@ -225,13 +227,13 @@ export class AddIncomingTransactionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._supplierService.getAllSuppliers().subscribe({
+    this._customerService.getAllCustomers().subscribe({
       next: (res) => {
-        this.suppliers = res;
-        console.log('Supplier Added');
+        this.customers = res;
+        console.log('Customers Added');
       },
       error: (err) => {
-        console.log('Error loading suppliers', err);
+        console.log('Error loading customers', err);
       },
     });
     this.onChanges();
@@ -239,7 +241,7 @@ export class AddIncomingTransactionComponent implements OnInit {
 
   onSubmit() {
     this.isSubmitted = true;
-    if (this.addIncomingTransactionForm.valid) {
+    if (this.addOutgoingTransactionForm.valid) {
       this._dialogService
         .openConfirmSaveDialog(
           'Are you sure that all of the details are correct?'
@@ -247,32 +249,32 @@ export class AddIncomingTransactionComponent implements OnInit {
         .afterClosed()
         .subscribe((result) => {
           if (result) {
-            console.log(this.addIncomingTransactionForm.value);
-            const newIncomingTransaction: IIncomingTransaction = {
+            console.log(this.addOutgoingTransactionForm.value);
+            const newOutgoingTransaction: IOutgoingTransaction = {
               date: new Date(
-                this.addIncomingTransactionForm.value.date
+                this.addOutgoingTransactionForm.value.date
               ).toISOString(),
-              supplier: this.addIncomingTransactionForm.value.supplierName,
-              supplierId: this.addIncomingTransactionForm.value.supplierName,
-              netWeight: this.addIncomingTransactionForm.value.netWeight,
-              moisture: this.addIncomingTransactionForm.value.moisture,
-              meterKgs: this.addIncomingTransactionForm.value.meterKgs,
-              netResecada: this.addIncomingTransactionForm.value.netResecada,
+              customer: this.addOutgoingTransactionForm.value.customerName,
+              customerId: this.addOutgoingTransactionForm.value.customerName,
+              netWeight: this.addOutgoingTransactionForm.value.netWeight,
+              moisture: this.addOutgoingTransactionForm.value.moisture,
+              meterKgs: this.addOutgoingTransactionForm.value.meterKgs,
+              netResecada: this.addOutgoingTransactionForm.value.netResecada,
               pricePerKg:
-                this.addIncomingTransactionForm.value.pricePerKg.toFixed(1),
-              amount: this.addIncomingTransactionForm.value.amount,
-              noOfSacks: this.addIncomingTransactionForm.value.noOfSacks,
-              expenses: this.addIncomingTransactionForm.value.expenses,
-              type: 0,
+                this.addOutgoingTransactionForm.value.pricePerKg.toFixed(1),
+              amount: this.addOutgoingTransactionForm.value.amount,
+              noOfSacks: this.addOutgoingTransactionForm.value.noOfSacks,
+              expenses: this.addOutgoingTransactionForm.value.expenses,
+              type: 1,
             };
 
             this._transactionService
-              .addIncomingTransaction(newIncomingTransaction)
+              .addOutgoingTransaction(newOutgoingTransaction)
               .subscribe({
                 next: (res) => {
                   console.log('Res: ', res);
                   this._alertService.showAlertSuccess(
-                    'Incoming Transaction was added.'
+                    'Outgoing Transaction was added.'
                   );
                   this._router.navigate(['/transactions']);
                 },
@@ -283,7 +285,7 @@ export class AddIncomingTransactionComponent implements OnInit {
                   );
                 },
               });
-            console.log('New Incoming Transaction: ', newIncomingTransaction);
+            console.log('New Outgoing Transaction: ', newOutgoingTransaction);
           }
         });
     }

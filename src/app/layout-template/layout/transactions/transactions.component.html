@@ -22,7 +22,7 @@
     </button>
     <mat-menu #menu="matMenu" xPosition="before">
       <a routerLink="/new-incoming" mat-menu-item>Incoming Transaction</a>
-      <a routerLink="/" mat-menu-item>Outgoing Transaction</a>
+      <a routerLink="/new-outgoing" mat-menu-item>Outgoing Transaction</a>
     </mat-menu>
   </div>
 </div>
@@ -130,6 +130,35 @@
                 }}
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="monthly-summary">
+        <div class="transaction-computation">
+          <div class="fw-600">Total Revenue:</div>
+
+          <div class="text-end">
+            {{ getMonthlySummary(monthlyTransaction) | currency : " Php " }}
+          </div>
+        </div>
+
+        <div class="transaction-computation">
+          <div class="fw-600">Total Capital:</div>
+        <div class="text-end"          {{
+              getTotalCapital(monthlyTransaction.transactionPerWeek)
+                | currency : " Php "
+            }}
+          </div>
+        </div>
+
+        <div class="transaction-computation">
+          <div class="fw-600">ROI:</div>
+          <div class="text-end">
+            {{
+              getReturnOfInvestment(monthlyTransaction.transactionPerWeek)
+                | currency : " Php "
+            }}
           </div>
         </div>
       </div>

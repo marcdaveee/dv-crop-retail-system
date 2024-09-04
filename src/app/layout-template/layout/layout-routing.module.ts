@@ -10,6 +10,7 @@ import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.comp
 import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
 import { AddIncomingTransactionComponent } from './transactions/add-incoming-transaction/add-incoming-transaction.component';
+import { AddOutgoingTransactionComponent } from './transactions/add-outgoing-transaction/add-outgoing-transaction.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       },
       { path: 'transactions', component: TransactionsComponent },
       { path: 'new-incoming', component: AddIncomingTransactionComponent },
+      { path: 'new-outgoing', component: AddOutgoingTransactionComponent },
       { path: 'customers', component: CustomersComponent },
       { path: 'customers/add-new', component: AddCustomerComponent },
       { path: 'suppliers', component: SuppliersComponent },

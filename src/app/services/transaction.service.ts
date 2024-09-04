@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {
   IGroupedTransaction,
   IIncomingTransaction,
+  IOutgoingTransaction,
   ITransaction,
   ITransactionPerMonth,
   ITransactionPerWeek,
@@ -27,6 +28,12 @@ export class TransactionService {
     newTransaction: IIncomingTransaction
   ): Observable<IIncomingTransaction> {
     return this._http.post<IIncomingTransaction>(this.apiUrl, newTransaction);
+  }
+
+  addOutgoingTransaction(
+    newTransaction: IOutgoingTransaction
+  ): Observable<IOutgoingTransaction> {
+    return this._http.post<IOutgoingTransaction>(this.apiUrl, newTransaction);
   }
 
   groupTransactionByMonth(
