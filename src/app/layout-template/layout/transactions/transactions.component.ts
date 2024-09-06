@@ -53,6 +53,16 @@ export class TransactionsComponent {
     return total;
   }
 
+  getTotalExpenses(transactions: ITransaction[]) {
+    let total = 0;
+
+    transactions.forEach((t) => {
+      total += t.expenses;
+    });
+
+    return total;
+  }
+
   getTotalRevenues(transaction: ITransaction[]) {
     let total = 0;
     transaction.forEach((t) => {
@@ -69,6 +79,9 @@ export class TransactionsComponent {
     const capital = this.getTotalCapital(transactions);
 
     returnOfInvestment = revenue - capital;
+
+    returnOfInvestment =
+      returnOfInvestment - this.getTotalExpenses(transactions);
     return returnOfInvestment;
   }
 

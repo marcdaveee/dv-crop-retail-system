@@ -59,7 +59,10 @@ export class TransactionService {
 
       const currentMonthTransactions = transactionList.filter((t) => {
         const transactionDate = new Date(t.date);
-        if (transactionDate.getMonth() === i) {
+        if (
+          transactionDate.getMonth() === i &&
+          transactionDate.getFullYear() === currentYear
+        ) {
           currentMonthInStr = this._datePipe.transform(transactionDate, 'MMMM');
           return true;
         } else {

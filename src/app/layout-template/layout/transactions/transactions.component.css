@@ -71,11 +71,25 @@
   width: 100%;
   background-color: #0f172a;
   color: #fff;
-  padding: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.monthly-summary {
+  width: 15%;
+}
+
+.monthly-computation {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 3px;
+  font-size: 15px;
 }
 
 .transaction-card {
   border: 1px solid #ccc;
+
   border-radius: 5px;
   padding: 14px;
   margin-bottom: 16px;
@@ -90,7 +104,7 @@
 .table-head,
 .table-row {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(11, 1fr);
   padding: 8px 0;
   font-size: 15px;
 }

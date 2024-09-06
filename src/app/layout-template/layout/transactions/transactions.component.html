@@ -41,8 +41,43 @@
       "
       class="mb-3"
     >
-      <div class="month-header">
+      <div class="month-header" *ngIf="monthlyTransaction.month !== ''">
         <h2 class="month-spacing">{{ monthlyTransaction.month }}</h2>
+
+        <div class="monthly-summary" *ngIf="monthlyTransaction.month !== ''">
+          <h4 class="fw-600 mb-1 text-center">Monthly Summary</h4>
+
+          <div class="monthly-computation">
+            <div>Total Revenue:</div>
+
+            <div class="text-end">
+              {{
+                getMonthlyRevenue(monthlyTransaction.transactionPerWeek)
+                  | currency : " Php "
+              }}
+            </div>
+          </div>
+
+          <div class="monthly-computation">
+            <div>Total Capital:</div>
+            <div class="text-end">
+              {{
+                getMonthlyCapital(monthlyTransaction.transactionPerWeek)
+                  | currency : " Php "
+              }}
+            </div>
+          </div>
+
+          <div class="monthly-computation">
+            <div>ROI:</div>
+            <div class="text-end">
+              {{
+                getMonthlyRoi(monthlyTransaction.transactionPerWeek)
+                  | currency : " Php "
+              }}
+            </div>
+          </div>
+        </div>
       </div>
 
       <div
@@ -62,8 +97,10 @@
             <p class="text-center">Meter Kgs.</p>
             <p class="text-center">Net Resecada</p>
             <p class="text-center">Price/kg</p>
-            <p class="text-center">Amount</p>
             <p class="text-center">No of Sacks</p>
+            <p class="text-center">Expenses</p>
+            <p class="text-center">Amount</p>
+
             <p class="text-center">Type</p>
           </div>
 
@@ -87,10 +124,14 @@
             <p class="text-center">
               {{ transaction.pricePerKg | currency : "Php " }}
             </p>
+            <p class="text-center">{{ transaction.noOfSacks }}</p>
+            <p class="text-center">
+              {{ transaction.expenses | currency : "Php " }}
+            </p>
             <p class="text-center fw-600">
               {{ transaction.amount | currency : "Php " }}
             </p>
-            <p class="text-center">{{ transaction.noOfSacks }}</p>
+
             <div class="flex">
               <div
                 class="text-center text-sm p-1"
@@ -122,6 +163,16 @@
             </div>
 
             <div class="transaction-computation">
+              <div class="fw-600">Expenses:</div>
+              <div class="text-end">
+                {{
+                  getTotalExpenses(weeklyTransaction.transactions)
+                    | currency : " Php "
+                }}
+              </div>
+            </div>
+
+            <div class="transaction-computation">
               <div class="fw-600">ROI:</div>
               <div class="text-end">
                 {{
@@ -130,39 +181,6 @@
                 }}
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="monthly-summary">
-        <div class="transaction-computation">
-          <div class="fw-600">Total Revenue:</div>
-
-          <div class="text-end">
-            {{
-              getMonthlyRevenue(monthlyTransaction.transactionPerWeek)
-                | currency : " Php "
-            }}
-          </div>
-        </div>
-
-        <div class="transaction-computation">
-          <div class="fw-600">Total Capital:</div>
-          <div class="text-end">
-            {{
-              getMonthlyCapital(monthlyTransaction.transactionPerWeek)
-                | currency : " Php "
-            }}
-          </div>
-        </div>
-
-        <div class="transaction-computation">
-          <div class="fw-600">ROI:</div>
-          <div class="text-end">
-            {{
-              getMonthlyRoi(monthlyTransaction.transactionPerWeek)
-                | currency : " Php "
-            }}
           </div>
         </div>
       </div>
