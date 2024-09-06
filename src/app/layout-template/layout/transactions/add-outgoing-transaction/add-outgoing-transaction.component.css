@@ -21,6 +21,9 @@
   padding: 0 42px;
   height: calc(100vh - 250px);
   overflow-y: scroll;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .form-wrapper {
@@ -42,4 +45,11 @@
   color: #f9fafb;
   font-size: 16px;
   font-weight: 500;
+}
+
+.stock-wrapper {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9fafb;
+  padding: 28px;
 }

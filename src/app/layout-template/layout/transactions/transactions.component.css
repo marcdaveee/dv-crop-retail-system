@@ -137,9 +137,17 @@
 
 /* Incoming or Outgoing styles */
 .incoming {
-  background-color: rgb(241, 39, 39);
+  background-color: rgb(227, 34, 34);
+  color: #fff;
+  padding: 3px 12px;
+  border-radius: 10px;
+  font-size: 12px;
 }
 
 .outgoing {
-  background-color: rgb(24, 206, 24);
+  background-color: rgb(12, 154, 12);
+  color: #fff;
+  padding: 3px 12px;
+  border-radius: 10px;
+  font-size: 12px;
 }

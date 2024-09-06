@@ -10,6 +10,7 @@ import {
 import { AlertService } from '../../../../services/alert.service';
 import { DialogService } from '../../../../services/dialog.service';
 import { Router } from '@angular/router';
+import { StockService } from '../../../../services/stock.service';
 
 @Component({
   selector: 'app-add-incoming-transaction',
@@ -25,6 +26,7 @@ export class AddIncomingTransactionComponent implements OnInit {
   constructor(
     private _transactionService: TransactionService,
     private _supplierService: SupplierService,
+    private _stockService: StockService,
     private _alertService: AlertService,
     private _dialogService: DialogService,
     private _router: Router
@@ -235,6 +237,8 @@ export class AddIncomingTransactionComponent implements OnInit {
       },
     });
     this.onChanges();
+
+    this._stockService.calculateStock();
   }
 
   onSubmit() {
@@ -287,5 +291,9 @@ export class AddIncomingTransactionComponent implements OnInit {
           }
         });
     }
+  }
+
+  getCurrentStock() {
+    return this._stockService.getCurrentStock();
   }
 }

@@ -12,6 +12,7 @@ import { DialogService } from '../../../../services/dialog.service';
 import { ICustomer } from '../../../../models/ICustomer.interface';
 import { CustomerService } from '../../../../services/customer.service';
 import { Router } from '@angular/router';
+import { StockService } from '../../../../services/stock.service';
 
 @Component({
   selector: 'app-add-outgoing-transaction',
@@ -29,6 +30,7 @@ export class AddOutgoingTransactionComponent {
     private _customerService: CustomerService,
     private _alertService: AlertService,
     private _dialogService: DialogService,
+    private _stockService: StockService,
     private _router: Router
   ) {
     this.addOutgoingTransactionForm = new FormGroup({
@@ -237,6 +239,8 @@ export class AddOutgoingTransactionComponent {
       },
     });
     this.onChanges();
+
+    this._stockService.calculateStock();
   }
 
   onSubmit() {
@@ -289,5 +293,9 @@ export class AddOutgoingTransactionComponent {
           }
         });
     }
+  }
+
+  getCurrentStock() {
+    return this._stockService.getCurrentStock();
   }
 }

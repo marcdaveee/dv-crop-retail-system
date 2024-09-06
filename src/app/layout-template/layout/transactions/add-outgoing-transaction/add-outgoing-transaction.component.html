@@ -245,5 +245,14 @@
         </div>
       </form>
     </div>
+
+    <!-- Stock Display -->
+    <div class="stock-wrapper">
+      <h3 class="mb-1">Current Stock (Copras)</h3>
+
+      <h2 class="text-center">
+        {{ getCurrentStock() < 0 ? 0 : getCurrentStock() }}
+      </h2>
+    </div>
   </div>
 </div>

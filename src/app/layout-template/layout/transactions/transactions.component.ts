@@ -23,15 +23,18 @@ export class TransactionsComponent {
     this._transactionService.getTransactions().subscribe({
       next: (res) => {
         this.transactionList = res;
+        console.log(this.transactionList);
+        if (this.transactionList.length !== 0) {
+          console.log('Response: ', res);
+          this.groupedTransactions =
+            this._transactionService.groupTransactionByMonth(
+              this.transactionList
+            );
+        }
         // this.transactionList.sort(
         //   (a, b) => new Date(b.date).getMonth() - new Date(a.date).getMonth()
         // );
         // console.log('After sort: ', this.transactionList);
-        console.log('Response: ', res);
-        this.groupedTransactions =
-          this._transactionService.groupTransactionByMonth(
-            this.transactionList
-          );
 
         this.isLoading = false;
       },
