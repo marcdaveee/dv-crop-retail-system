@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomersComponent } from './customers/customers.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
 import { TransactionsComponent } from './transactions/transactions.component';
@@ -19,6 +18,7 @@ import { AddCustomerComponent } from './customers/add-customer/add-customer.comp
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
 import { AddIncomingTransactionComponent } from './transactions/add-incoming-transaction/add-incoming-transaction.component';
 import { AddOutgoingTransactionComponent } from './transactions/add-outgoing-transaction/add-outgoing-transaction.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [

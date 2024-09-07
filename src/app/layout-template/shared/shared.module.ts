@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SuccessAlertComponent } from './alerts/success-alert/success-alert.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { ConfirmSaveComponent } from './dialogs/confirm-save/confirm-save.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -25,12 +26,14 @@ import { ConfirmSaveComponent } from './dialogs/confirm-save/confirm-save.compon
     MatDialogModule,
     MatButtonModule,
     MatIcon,
+    NgApexchartsModule,
   ],
   exports: [
     SidebarNavComponent,
     HeaderComponent,
     MatMenuModule,
     MatButtonModule,
+    NgApexchartsModule,
   ],
 })
 export class SharedModule {}

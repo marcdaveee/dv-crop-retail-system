@@ -114,4 +114,76 @@ export class TransactionService {
 
     return groupedTransactions;
   }
+
+  getTotalCapital(transactions: ITransaction[]) {
+    let total = 0;
+    transactions.forEach((t) => {
+      if (t.type === 0) {
+        total += t.amount;
+      }
+    });
+    return total;
+  }
+
+  getTotalExpenses(transactions: ITransaction[]) {
+    let total = 0;
+
+    transactions.forEach((t) => {
+      total += t.expenses;
+    });
+
+    return total;
+  }
+
+  getTotalRevenues(transaction: ITransaction[]) {
+    let total = 0;
+    transaction.forEach((t) => {
+      if (t.type === 1) {
+        total += t.amount;
+      }
+    });
+    return total;
+  }
+
+  getReturnOfInvestment(transactions: ITransaction[]) {
+    let returnOfInvestment = 0;
+    const revenue = this.getTotalRevenues(transactions);
+    const capital = this.getTotalCapital(transactions);
+
+    returnOfInvestment = revenue - capital;
+
+    returnOfInvestment =
+      returnOfInvestment - this.getTotalExpenses(transactions);
+    return returnOfInvestment;
+  }
+
+  getMonthlyCapital(weeklyTransactions: ITransactionPerWeek[]) {
+    let monthlyCapital = 0;
+
+    weeklyTransactions.forEach((wt) => {
+      monthlyCapital += this.getTotalCapital(wt.transactions);
+    });
+
+    return monthlyCapital;
+  }
+
+  getMonthlyRevenue(weeklyTransactions: ITransactionPerWeek[]) {
+    let monthlyRevenue = 0;
+
+    weeklyTransactions.forEach((wt) => {
+      monthlyRevenue += this.getTotalRevenues(wt.transactions);
+    });
+
+    return monthlyRevenue;
+  }
+
+  getMonthlyRoi(weeklyTransactions: ITransactionPerWeek[]) {
+    let monthlyRoi = 0;
+
+    weeklyTransactions.forEach((wt) => {
+      monthlyRoi += this.getReturnOfInvestment(wt.transactions);
+    });
+
+    return monthlyRoi;
+  }
 }

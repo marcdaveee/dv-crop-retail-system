@@ -1,1 +1,32 @@
-<p>dashboard works!</p>
+<div class="content-top">
+  <div class="content-top-left">
+    <h2>Dashboard</h2>
+  </div>
+</div>
+
+<div class="content-body">
+  <div class="dashboard-row">
+    <div class="dashboard-card fw-600 text-light-gray">Copras Stocks</div>
+    <div class="dashboard-card fw-600 text-light-gray">No. of Transactions</div>
+    <div class="dashboard-card fw-600 text-light-gray">No. of Suppliers</div>
+    <div class="dashboard-card fw-600 text-light-gray">No. of Customers</div>
+  </div>
+
+  <h4 class="fw-600 mb-1 text-light-gray">Transactions per Month</h4>
+  <div class="dashboard-analytics-wrapper">
+    <div id="chart">
+      <apx-chart
+        [series]="chartOptions.series!"
+        [chart]="chartOptions.chart!"
+        [dataLabels]="chartOptions.dataLabels!"
+        [plotOptions]="chartOptions.plotOptions!"
+        [yaxis]="chartOptions.yaxis!"
+        [legend]="chartOptions.legend!"
+        [fill]="chartOptions.fill!"
+        [stroke]="chartOptions.stroke!"
+        [tooltip]="chartOptions.tooltip!"
+        [xaxis]="chartOptions.xaxis!"
+      ></apx-chart>
+    </div>
+  </div>
+</div>

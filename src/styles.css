@@ -109,6 +109,11 @@ a {
   text-align: center;
 }
 
+/* Text Colors */
+.text-light-gray {
+  color: #4b5563;
+}
+
 /* Grids */
 .grid-col-2 {
   display: grid;

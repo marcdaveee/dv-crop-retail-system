@@ -47,73 +47,46 @@ export class TransactionsComponent {
   }
 
   getTotalCapital(transactions: ITransaction[]) {
-    let total = 0;
-    transactions.forEach((t) => {
-      if (t.type === 0) {
-        total += t.amount;
-      }
-    });
+    let total = this._transactionService.getTotalCapital(transactions);
+
     return total;
   }
 
   getTotalExpenses(transactions: ITransaction[]) {
-    let total = 0;
-
-    transactions.forEach((t) => {
-      total += t.expenses;
-    });
+    let total = this._transactionService.getTotalExpenses(transactions);
 
     return total;
   }
 
-  getTotalRevenues(transaction: ITransaction[]) {
-    let total = 0;
-    transaction.forEach((t) => {
-      if (t.type === 1) {
-        total += t.amount;
-      }
-    });
+  getTotalRevenues(transactions: ITransaction[]) {
+    let total = this._transactionService.getTotalRevenues(transactions);
+
     return total;
   }
 
   getReturnOfInvestment(transactions: ITransaction[]) {
-    let returnOfInvestment = 0;
-    const revenue = this.getTotalRevenues(transactions);
-    const capital = this.getTotalCapital(transactions);
+    let returnOfInvestment =
+      this._transactionService.getReturnOfInvestment(transactions);
 
-    returnOfInvestment = revenue - capital;
-
-    returnOfInvestment =
-      returnOfInvestment - this.getTotalExpenses(transactions);
     return returnOfInvestment;
   }
 
   getMonthlyCapital(weeklyTransactions: ITransactionPerWeek[]) {
-    let monthlyCapital = 0;
-
-    weeklyTransactions.forEach((wt) => {
-      monthlyCapital += this.getTotalCapital(wt.transactions);
-    });
+    let monthlyCapital =
+      this._transactionService.getMonthlyCapital(weeklyTransactions);
 
     return monthlyCapital;
   }
 
   getMonthlyRevenue(weeklyTransactions: ITransactionPerWeek[]) {
-    let monthlyRevenue = 0;
-
-    weeklyTransactions.forEach((wt) => {
-      monthlyRevenue += this.getTotalRevenues(wt.transactions);
-    });
+    let monthlyRevenue =
+      this._transactionService.getMonthlyRevenue(weeklyTransactions);
 
     return monthlyRevenue;
   }
 
   getMonthlyRoi(weeklyTransactions: ITransactionPerWeek[]) {
-    let monthlyRoi = 0;
-
-    weeklyTransactions.forEach((wt) => {
-      monthlyRoi += this.getReturnOfInvestment(wt.transactions);
-    });
+    let monthlyRoi = this._transactionService.getMonthlyRoi(weeklyTransactions);
 
     return monthlyRoi;
   }
