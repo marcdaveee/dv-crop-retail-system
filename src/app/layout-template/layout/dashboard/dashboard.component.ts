@@ -18,6 +18,10 @@ import {
   ApexFill,
   ApexTooltip,
 } from 'ng-apexcharts';
+import { ICount } from '../../../models/ICount.interface';
+import { DashboardService } from '../../../services/dashboard.service';
+import { count } from 'rxjs';
+import { AlertService } from '../../../services/alert.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -45,8 +49,13 @@ export class DashboardComponent {
   monthlyCapital: number[] = [];
   monthlyRevenue: number[] = [];
   monthlyNetProfit: number[] = [];
+  countData: ICount | null = null;
 
-  constructor(private _transactionService: TransactionService) {
+  constructor(
+    private _transactionService: TransactionService,
+    private _dashboardService: DashboardService,
+    private _alertService: AlertService
+  ) {
     this.chartOptions = {
       series: [
         {
@@ -126,6 +135,17 @@ export class DashboardComponent {
     };
 
     this.getTransactions();
+
+    this._dashboardService.getDashboardCountData().subscribe({
+      next: (res) => {
+        this.countData = res;
+        console.log(res);
+      },
+      error: (err) => {
+        this._alertService.showAlertSuccess("Couldn't load data.");
+        console.log(err.message);
+      },
+    });
   }
 
   getTransactions() {

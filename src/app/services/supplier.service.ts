@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ISupplier } from '../models/ISupplier.interface';
 import { HttpClient } from '@angular/common/http';
 
-import { map } from 'rxjs';
+import { count, map } from 'rxjs';
 import { Observable } from 'rxjs';
 
 interface ServerResponse {
@@ -53,5 +53,11 @@ export class SupplierService {
   deleteSupplier(supplier: ISupplier): Observable<ISupplier> {
     const url = `${this.apiUrl}/${supplier.id}`;
     return this._http.delete<ISupplier>(url);
+  }
+
+  getNoOfSuppliers(suppliers: ISupplier[]) {
+    let count = suppliers.length;
+
+    return count;
   }
 }

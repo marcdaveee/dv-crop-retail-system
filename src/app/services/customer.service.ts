@@ -35,4 +35,13 @@ export class CustomerService {
 
     return this._http.delete(url);
   }
+
+  getNoOfCustomers() {
+    this.getAllCustomers().subscribe({
+      next: (res) => {
+        let count = res.length;
+        return count;
+      },
+    });
+  }
 }

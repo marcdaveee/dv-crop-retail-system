@@ -6,10 +6,31 @@
 
 <div class="content-body">
   <div class="dashboard-row">
-    <div class="dashboard-card fw-600 text-light-gray">Copras Stocks</div>
-    <div class="dashboard-card fw-600 text-light-gray">No. of Transactions</div>
-    <div class="dashboard-card fw-600 text-light-gray">No. of Suppliers</div>
-    <div class="dashboard-card fw-600 text-light-gray">No. of Customers</div>
+    <div class="dashboard-card fw-600 text-light-gray">
+      <h4>Copras Stocks</h4>
+      <div class="count-wrapper">
+        <p class="count-data">{{ countData?.stockCount }}</p>
+      </div>
+    </div>
+    <div class="dashboard-card fw-600 text-light-gray">
+      <h4>No. of Transactions</h4>
+      <div class="count-wrapper">
+        <p class="count-data">{{ countData?.transactionCount }}</p>
+        <p>(current month)</p>
+      </div>
+    </div>
+    <div class="dashboard-card fw-600 text-light-gray">
+      <h4>No. of Suppliers</h4>
+      <div class="count-wrapper">
+        <p class="count-data">{{ countData?.supplierCount }}</p>
+      </div>
+    </div>
+    <div class="dashboard-card fw-600 text-light-gray">
+      <h4>No. of Customers</h4>
+      <div class="count-wrapper">
+        <p class="count-data">{{ countData?.customerCount }}</p>
+      </div>
+    </div>
   </div>
 
   <h4 class="fw-600 mb-1 text-light-gray">Transactions per Month</h4>
