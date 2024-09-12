@@ -1,0 +1,57 @@
+.top-bar {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.branding {
+  font-size: 28px;
+  margin-left: 38px;
+  font-style: italic;
+}
+
+.login-wrapper {
+  height: 80vh;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  background-color: #fff;
+  width: 450px;
+
+  padding: 24px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+}
+
+.login-title {
+  margin-bottom: 18px;
+  font-size: 32px;
+}
+
+.login-text {
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.forgot-pass-wrapper {
+  display: block;
+  margin: 32px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.forgot-pass {
+  color: rgb(76, 165, 210);
+  text-decoration: underline;
+}
+
+.login-btn {
+  width: 100%;
+}

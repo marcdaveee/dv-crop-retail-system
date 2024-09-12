@@ -1,0 +1,60 @@
+<nav class="top-bar">
+  <h3 class="branding">DV Trading</h3>
+</nav>
+
+<div class="login-wrapper">
+  <div class="login-container">
+    <h3 class="login-title text-center">Log In</h3>
+    <p class="text-center login-text">
+      Welcome back! Login to check your transactions.
+    </p>
+
+    <div class="form-wrapper">
+      <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            formControlName="email"
+          />
+          <div
+            *ngIf="
+              !logInForm.get('email')?.valid &&
+              (logInForm.get('email')?.touched || isSubmitted)
+            "
+            class="error-block"
+          >
+            Please provide your email
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <div
+            *ngIf="
+              !logInForm.get('password')?.valid &&
+              (logInForm.get('password')?.touched || isSubmitted)
+            "
+            class="error-block"
+          >
+            Please enter your password
+          </div>
+        </div>
+
+        <div class="forgot-pass-wrapper">
+          <a href="" class="forgot-pass">Forgot Password?</a>
+        </div>
+
+        <button class="btn btn-primary login-btn" type="submit">Log In</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -189,6 +189,15 @@ label {
   padding: 3px;
 }
 
+/* Display */
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
 /* Alerts */
 .success-alert {
   --mdc-snackbar-container-color: #12c99b !important;

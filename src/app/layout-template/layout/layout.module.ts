@@ -19,6 +19,7 @@ import { EditCustomerComponent } from './customers/edit-customer/edit-customer.c
 import { AddIncomingTransactionComponent } from './transactions/add-incoming-transaction/add-incoming-transaction.component';
 import { AddOutgoingTransactionComponent } from './transactions/add-outgoing-transaction/add-outgoing-transaction.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EditCustomerComponent,
     AddIncomingTransactionComponent,
     AddOutgoingTransactionComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
