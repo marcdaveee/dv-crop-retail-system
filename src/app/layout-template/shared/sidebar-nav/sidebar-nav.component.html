@@ -1,57 +1,71 @@
 <div class="app-side-nav">
   <h4 class="logo">DV Crop Trading</h4>
-  <div class="nav-links">
-    <a
-      routerLink="/"
-      routerLinkActive="active-nav-links"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Dashboard icon"
-        class="inline-block"
-        >dashboard</mat-icon
+  <div class="nav-links-wrapper">
+    <div class="nav-links">
+      <a
+        routerLink="/"
+        routerLinkActive="active-nav-links"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
-      <p>Dashboard</p></a
-    >
-    <a
-      routerLink="/transactions"
-      routerLinkActive="active-nav-links"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Transaction icon"
-        class="inline-block"
-        >receipt_long</mat-icon
-      >Transactions</a
-    >
-    <a
-      routerLink="/customers"
-      routerLinkActive="active-nav-links"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Customer icon"
-        class="inline-block"
-        >groups</mat-icon
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Dashboard icon"
+          class="inline-block"
+          >dashboard</mat-icon
+        >
+        <p>Dashboard</p></a
       >
+      <a
+        routerLink="/transactions"
+        routerLinkActive="active-nav-links"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Transaction icon"
+          class="inline-block"
+          >receipt_long</mat-icon
+        >Transactions</a
+      >
+      <a
+        routerLink="/customers"
+        routerLinkActive="active-nav-links"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Customer icon"
+          class="inline-block"
+          >groups</mat-icon
+        >
 
-      Customers</a
-    >
-    <a
-      routerLink="/suppliers"
-      routerLinkActive="active-nav-links"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Customer icon"
-        class="inline-block"
-        >local_shipping</mat-icon
+        Customers</a
       >
-      Suppliers</a
-    >
+      <a
+        routerLink="/suppliers"
+        routerLinkActive="active-nav-links"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Customer icon"
+          class="inline-block"
+          >local_shipping</mat-icon
+        >
+        Suppliers</a
+      >
+    </div>
+
+    <div class="nav-links">
+      <button (click)="logOut()" class="logout-btn">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Customer icon"
+          class="inline-block"
+          >logout</mat-icon
+        >
+        Logout
+      </button>
+    </div>
   </div>
 </div>

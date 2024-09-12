@@ -12,6 +12,7 @@ import { EditCustomerComponent } from './customers/edit-customer/edit-customer.c
 import { AddIncomingTransactionComponent } from './transactions/add-incoming-transaction/add-incoming-transaction.component';
 import { AddOutgoingTransactionComponent } from './transactions/add-outgoing-transaction/add-outgoing-transaction.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from '../../helpers/auth.guard';
 
 const routes: Routes = [
   {
@@ -23,18 +24,51 @@ const routes: Routes = [
         path: '',
         component: DashboardComponent,
       },
-      { path: 'transactions', component: TransactionsComponent },
-      { path: 'new-incoming', component: AddIncomingTransactionComponent },
-      { path: 'new-outgoing', component: AddOutgoingTransactionComponent },
-      { path: 'customers', component: CustomersComponent },
-      { path: 'customers/add-new', component: AddCustomerComponent },
-      { path: 'suppliers', component: SuppliersComponent },
-      { path: 'suppliers/add-new', component: AddSupplierComponent },
-      { path: 'customers/edit/:id', component: EditCustomerComponent },
+      {
+        path: 'transactions',
+        component: TransactionsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'new-incoming',
+        component: AddIncomingTransactionComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'new-outgoing',
+        component: AddOutgoingTransactionComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'customers',
+        component: CustomersComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'customers/add-new',
+        component: AddCustomerComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'suppliers',
+        component: SuppliersComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'suppliers/add-new',
+        component: AddSupplierComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'customers/edit/:id',
+        component: EditCustomerComponent,
+        canActivate: [AuthGuard],
+      },
       {
         path: 'suppliers/edit/:id',
         component: EditSupplierComponent,
         pathMatch: 'prefix',
+        canActivate: [AuthGuard],
       },
     ],
   },

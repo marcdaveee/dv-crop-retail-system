@@ -64,7 +64,7 @@
   border-radius: 5px;
   padding: 16px 10px;
   overflow-y: scroll;
-  height: calc(100vh - 235px);
+  height: calc(100vh - 215px);
 }
 
 .month-header {

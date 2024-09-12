@@ -25,11 +25,18 @@ export class ErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
+        console.log(err);
         if (err) {
+          console.log(err);
           switch (err.status) {
+            case 0:
+              this._alertService.showAlertSuccess(
+                'Server Error Occured. Kindly inform your developer.'
+              );
+              break;
             case 401:
               this._alertService.showAlertSuccess(
-                "You're Unauthorized. Please login."
+                'Invalid Credentials. Please try again.'
               );
               this._router.navigate(['/login']);
               break;

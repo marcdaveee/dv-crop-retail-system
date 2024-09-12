@@ -4,6 +4,7 @@ export interface ILoginRequest {
 }
 
 export interface ILoginResponse {
+  id: string | number;
   email: string;
   token: string;
 }

@@ -11,6 +11,7 @@ import { SuccessAlertComponent } from './alerts/success-alert/success-alert.comp
 import { MatMenuModule } from '@angular/material/menu';
 import { ConfirmSaveComponent } from './dialogs/confirm-save/confirm-save.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     MatButtonModule,
     MatIcon,
     NgApexchartsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     SidebarNavComponent,
