@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout-template/layout/layout.module';
 import { SharedModule } from './layout-template/shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { SupplierService } from './services/supplier.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     SupplierService,
     provideHttpClient(),
     provideAnimationsAsync(),
+    [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   ],
 
   bootstrap: [AppComponent],
