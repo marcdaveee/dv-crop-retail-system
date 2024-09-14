@@ -5,6 +5,7 @@ import { ILoginRequest } from '../../../models/IAuth.inteface';
 import { first } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../../services/alert.service';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,8 @@ import { AlertService } from '../../../services/alert.service';
 export class LoginComponent {
   logInForm!: FormGroup;
   isSubmitted = false;
+  isLoading = false;
+  faSpinner = faSpinner;
   returnUrl = '';
   error = '';
 
@@ -34,6 +37,7 @@ export class LoginComponent {
   onSubmit() {
     this.isSubmitted = true;
     if (this.logInForm.valid) {
+      this.isLoading = true;
       const loginReq: ILoginRequest = {
         email: this.logInForm.value.email,
         password: this.logInForm.value.password,
@@ -44,11 +48,13 @@ export class LoginComponent {
         .subscribe({
           next: (data) => {
             this._router.navigate([this.returnUrl]);
-            this._alertService.showAlertSuccess('Login Successfully');
+            this._alertService.showAlertSuccess('You are logged in.');
+            this.isLoading = false;
           },
           error: (err) => {
             this.error = err;
             console.log(err);
+            this.isLoading = false;
           },
         });
     }

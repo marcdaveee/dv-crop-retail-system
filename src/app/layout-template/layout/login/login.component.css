@@ -55,3 +55,13 @@
 .login-btn {
   width: 100%;
 }
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spinner 0.8s linear infinite;
+}

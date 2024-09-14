@@ -21,7 +21,7 @@ export class SidebarNavComponent {
 
   logOut() {
     this._authService.logout();
-    this._alertService.showAlertSuccess('Logout Successfully');
+    this._alertService.showAlertSuccess('You are logged out.');
     this._router.navigate(['/login']);
   }
 }
